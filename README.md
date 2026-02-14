@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Something Dev.
 
-## Getting Started
+<div align="center">
+  <img src="public/d.png" alt="Logo" width="120" />
+</div>
 
-First, run the development server:
+<div align="center">
+  <h3>Built with hate, love, and legacy hardware.</h3>
+</div>
+
+---
+
+## 🛑 The "Why"
+
+Most modern websites are bloated trash. They require 32GB of RAM to render a simple landing page because developers are lazy and computers are too fast.
+
+**I don't have that luxury.**
+
+I code on a **2015 Mac Pro (Trash Can Edition)** with **8GB of RAM**.
+If a chrome tab takes too much memory, my Spotify stutters.
+If I run Docker, my room heats up by 5 degrees.
+
+This constraint forces me to do something most "engineers" forgot how to do: **Optimize.**
+
+## ⚡ The Stack
+
+- **Next.js 16**: Newest version, but stripped down. No unnecessary hydration.
+- **Tailwind CSS**: Because writing raw CSS is for mascocists, but shipping 5MB CSS files is for idiots.
+- **Phosphor Icons**: SVGs. Clean.
+- **Framer Motion**: The only heavy library I allow, because life is too short for static junk.
+
+## 🛠️ The Rig
+
+- **CPU**: Intel Xeon E5 (Quad Core). An ancient beast.
+- **RAM**: 8GB DDR3. Yes, DDR3. Cry about it.
+- **Storage**: 120GB SSD. I have to delete node_modules weekly to survive.
+
+## 🚀 Run It
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install # Grab a coffee, this might kill my CPU
+npm run dev # Fingers crossed
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📜 License
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT. Steal it. I don't care. Just don't make it slow.
