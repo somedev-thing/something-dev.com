@@ -13,7 +13,16 @@ export const config = {
     name: "Dustin",
     siteName: "something-dev.com",
     email: "dustin@something-dev.com", 
+    repo: "https://github.com/somedev-thing/something-dev.com",
   },
+
+  nav: [
+    { name: "Work", href: "/projects" },
+    { name: "Lore", href: "/about" },
+    { name: "Thoughts", href: "/blog" },
+    { name: "Setup", href: "/uses" },
+    { name: "Archive", href: "/graveyard" },
+  ],
   
   socials: [
     { name: "GitHub", url: "https://github.com/somedev-thing", icon: GithubLogo, username: "@somedev-thing" },

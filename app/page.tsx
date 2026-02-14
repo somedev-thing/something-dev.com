@@ -74,9 +74,9 @@ export default async function Home() {
             
             {/* Project 1 */}
             <Link href="https://dscrd.wtf" target="_blank" className="group block relative h-full">
-                 <div className="rounded-[2.5rem] bg-[#5865F2] p-10 md:p-12 relative overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:brightness-110 shadow-2xl h-[500px] flex flex-col justify-between">
-                    <div className="relative z-10">
-                         <span className="px-3 py-1 bg-black/20 rounded-full text-xs font-bold text-white mb-6 inline-block backdrop-blur-md">
+                 <div className="rounded-[2.5rem] bg-[#5865F2] p-10 md:p-12 relative overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:brightness-110 shadow-2xl h-[500px] flex flex-col">
+                    <div className="relative z-10 flex-1 flex flex-col justify-center">
+                         <span className="px-3 py-1 bg-black/20 rounded-full text-xs font-bold text-white mb-6 w-fit backdrop-blur-md">
                              SaaS / Discord API
                         </span>
                         <h3 className="text-6xl md:text-7xl font-bold text-white mb-4 tracking-tighter font-display">dscrd.wtf</h3>
@@ -85,7 +85,7 @@ export default async function Home() {
                         </p>
                     </div>
                     
-                    <div className="relative z-10 flex justify-between items-end mt-8">
+                    <div className="relative z-10 flex justify-between items-end mt-auto">
                          <span className="inline-flex items-center gap-2 text-white font-bold text-lg border-b-2 border-white/30 pb-1 group-hover:border-white transition-colors font-sans">
                             View Production <ArrowRight weight="bold" />
                          </span>
@@ -97,9 +97,9 @@ export default async function Home() {
 
              {/* Project 2 */}
             <Link href="https://musilarity.xyz" target="_blank" className="group block relative h-full">
-                 <div className="rounded-[2.5rem] bg-[#1DB954] p-10 md:p-12 relative overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:brightness-110 shadow-2xl h-[500px] flex flex-col justify-between">
-                    <div className="relative z-10">
-                         <span className="px-3 py-1 bg-black/20 rounded-full text-xs font-bold text-white mb-6 inline-block backdrop-blur-md">
+                 <div className="rounded-[2.5rem] bg-[#1DB954] p-10 md:p-12 relative overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:brightness-110 shadow-2xl h-[500px] flex flex-col">
+                    <div className="relative z-10 flex-1 flex flex-col justify-center">
+                         <span className="px-3 py-1 bg-black/20 rounded-full text-xs font-bold text-white mb-6 w-fit backdrop-blur-md">
                              Algorithm / Spotify API
                         </span>
                         <h3 className="text-6xl md:text-7xl font-bold text-white mb-4 tracking-tighter font-display">Musilarity</h3>
@@ -108,7 +108,7 @@ export default async function Home() {
                         </p>
                     </div>
 
-                    <div className="relative z-10 flex justify-between items-end mt-8">
+                    <div className="relative z-10 flex justify-between items-end mt-auto">
                          <span className="inline-flex items-center gap-2 text-black font-bold text-lg border-b-2 border-black/30 pb-1 group-hover:border-black transition-colors font-sans">
                             View Production <ArrowRight weight="bold" />
                          </span>

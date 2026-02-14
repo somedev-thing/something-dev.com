@@ -1,11 +1,10 @@
-"use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { GithubLogo, DiscordLogo } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import { config } from "@/lib/config";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -18,14 +17,6 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const links = [
-    { name: "Work", href: "/projects" },
-    { name: "Lore", href: "/about" },
-    { name: "Thoughts", href: "/blog" },
-    { name: "Setup", href: "/uses" },
-    { name: "Archive", href: "/graveyard" },
-  ];
 
   return (
     <nav className={cn(
@@ -50,24 +41,24 @@ export function Navbar() {
                 "text-lg font-bold text-white transition-opacity font-display",
                 scrolled ? "opacity-100" : "opacity-0 md:opacity-100"
             )}>
-                SOMETHING DEV
+                {config.identity.siteName.toUpperCase().replace(".COM", "").replace("-", " ")}
             </span>
         </Link>
         
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-6 bg-white/5 backdrop-blur-md border border-white/5 rounded-full px-6 py-2">
-            <Link href="/projects" className={cn("text-sm font-bold transition-colors font-nav", pathname === "/projects" ? "text-white" : "text-white/60 hover:text-white")}>
-                Work
-            </Link>
-            <Link href="/about" className={cn("text-sm font-bold transition-colors font-nav", pathname === "/about" ? "text-white" : "text-white/60 hover:text-white")}>
-                Lore
-            </Link>
-            <Link href="/blog" className={cn("text-sm font-bold transition-colors font-nav", pathname === "/blog" ? "text-white" : "text-white/60 hover:text-white")}>
-                Thoughts
-            </Link>
-            <Link href="/uses" className={cn("text-sm font-bold transition-colors font-nav", pathname === "/uses" ? "text-white" : "text-white/60 hover:text-white")}>
-                Setup
-            </Link>
+            {config.nav.map((link) => (
+                <Link 
+                    key={link.name} 
+                    href={link.href} 
+                    className={cn(
+                        "text-sm font-bold transition-colors font-nav", 
+                        pathname === link.href ? "text-white" : "text-white/60 hover:text-white"
+                    )}
+                >
+                    {link.name}
+                </Link>
+            ))}
         </nav>
         
         {/* Socials / CTA */}

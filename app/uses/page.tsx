@@ -98,7 +98,7 @@ export default function Uses() {
                 <div className="p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
                     <Globe size={32} className="text-purple-400 mb-4" weight="fill" />
                     <h3 className="font-bold text-white mb-2">Browser</h3>
-                    <p className="text-sm text-muted-foreground">Arc.<br/>It consumes 40% of my RAM, but the sidebar is pretty.</p>
+                    <p className="text-sm text-muted-foreground">Zen.<br/>Because vertical tabs are the future.</p>
                 </div>
                 <div className="p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
                     <PenNib size={32} className="text-pink-400 mb-4" weight="fill" />
