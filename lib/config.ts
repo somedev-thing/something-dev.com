@@ -18,8 +18,8 @@ export const config = {
 
   nav: [
     { name: "Work", href: "/projects" },
-    { name: "Lore", href: "/about" },
-    { name: "Thoughts", href: "/blog" },
+    { name: "About", href: "/about" },
+    { name: "Blog", href: "/blog" },
     { name: "Setup", href: "/uses" },
     { name: "Archive", href: "/graveyard" },
   ],

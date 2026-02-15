@@ -1,0 +1,351 @@
+---
+title: "I Own 32 Domains and I Am Not Sorry: A Manifesto"
+date: "Feb 15, 2026"
+excerpt: "My Cloudflare dashboard looks like a graveyard of good ideas. Here is why buying a domain is the best (and only) part of some projects."
+category: "Chaos"
+author: "Dustin"
+---
+
+There is a specific moment in every developer's life that defines who they are. It separates the "Senior Engineers" from the "Makers," the "Product Managers" from the "Chaotic Good" builders.
+
+It isn't when you ship your first app. It isn't when you get your first paycheck. It isn't even when you center a `div` on the first try (though that is a close second).
+
+It happens at 3:00 AM.
+
+You are running on Fanta Exotic and the blue light of a VS Code window. The room is dark, lit only by the blinking standby LEDs of a Daslight interface and the ominous, warm glow of a 2015 Mac Pro Trashcan that is definitely thermal throttling. The fan is humming that specific frequency that sounds like a jet engine failing to take off.
+
+You have an Idea™.
+
+It isn't just an idea. It’s _The Idea_. It’s the one. It’s going to disrupt the industry. It’s going to solve a problem you didn't know you had five minutes ago. It’s going to be the next big thing on Product Hunt (even though you hate Product Hunt and the hustle culture it represents).
+
+A normal person would write this idea down. They might open a Notion doc and create a nice little Kanban board. They might create a Jira ticket if they hate themselves. They might tell a friend.
+
+You don't do that. You don't write code. You don't open Figma to draw a rectangle and call it a UI. You don't create a database schema.
+
+You go to **Spaceship** or **Cloudflare** and you search for the name.
+
+## The Dopamine Hit of `.xyz`
+
+I currently own 32 domains.
+I have 3 active websites.
+
+Do the math. That is a **9% success rate**.
+
+In any other industry, I would be fired immediately. If I were a chef and I burned 91% of the steaks I cooked, I would be banned from the kitchen. If I were a theater tech and I missed 91% of my lighting cues during _Hamlet_, the director would personally strangle me with a 5-pin DMX cable.
+
+But in the world of side-projects? In the world of "Indie Hacking"? I am a visionary. I am a "serial entrepreneur" (which is just a fancy LinkedIn word for "unemployed with a credit card and poor impulse control").
+
+There is something intoxicating about a clean URL. When I bought `dscrd.wtf` for €1.74, I didn't just buy a DNS entry. I bought _potential_. I bought the _vibe_.
+
+For the price of a Döner, I staked my claim on a tiny corner of the internet. It doesn't matter that the project might sit in my `~/Dev/Graveyard` folder for six months. It doesn't matter that I haven't written a single line of backend logic yet. It doesn't matter that I don't know how I'm going to handle auth.
+
+For that one moment, when the checkout screen says "Success" and Cloudflare asks to import your DNS records, the project is real. It exists. It has a name.
+
+It is the digital equivalent of buying a new notebook. You know the feeling. You buy a nice, expensive Moleskine because "this is the one where I'll actually be organized." You write on the first page. Your handwriting is perfect. And then you mess up one letter on page three, the ink smears, and the notebook is dead to you. You throw it in a drawer and buy a new one.
+
+Domains are my Moleskines. And Cloudflare is my drawer.
+
+## The Financial "Girl Math" of Devs
+
+Let's talk about the money, because this is where the delusion really sets in.
+
+I recently bought `something-dev.com` for €4.95. That is cheap. That is basically free.
+I bought `ponys.dev` for €8.73. A bit steeper, but it’s a `.dev` TLD, so it feels professional. It implies I know Google tech.
+I bought `dscrd.wtf` for €1.74. A steal.
+
+My brain does this incredible gymnastic routine where it justifies these costs:
+
+- "€1.74? That's less than a Coke at a restaurant."
+- "€4.95? That's barely a sandwich at the bakery."
+- "€8.73? I mean, I'll use it for my _career_, so it's technically an investment in my personal brand."
+
+What my brain conveniently ignores is the **Renewal Fee**.
+
+`dscrd.wtf` renews at **€24.41**.
+`ponys.dev` renews at **€15.00**.
+The weird `.io` domain I bought last year (that I forgot about because the project failed to compile) renews at **€45.00**.
+
+Suddenly, my "cheap hobby" is a subscription service that costs me €300 a year. I am essentially paying a monthly rent to ICANN for the privilege of parking empty Next.js starter templates on the internet. I am a digital landlord of vacant lots.
+
+And yet, I keep doing it. I have auto-renew turned on for all of them. Why? Because _what if_?
+
+What if I actually finish `portalbound.xyz` next month? I can't let the domain drop. Someone else might take it. (Narrator: No one else wants a domain for a custom Minecraft client that hasn't been updated since version 1.19).
+
+## The Name Game (A Ritual of Madness)
+
+Before the purchase comes the search. This is a ritual that can take hours.
+
+You have the idea: "A dashboard for theater lights."
+You type `lights.com`. Taken. Obviously. Cost: $50,000.
+You type `theater-lights.com`. Taken.
+You type `lux.io`. Taken.
+
+Now you enter the **Thesaurus Phase**. You have three tabs open:
+
+1.  Cloudflare Registrar
+2.  Thesaurus.com (synonyms for "light", "beam", "ray", "photon")
+3.  Google Translate (checking what "light" is in Latin, Japanese, and Norwegian)
+
+You start trying the "Startup Suffixes."
+`lightify.com`? No.
+`getlight.com`? No.
+`lightapp.io`? No.
+
+Then you start looking at the "Cool TLDs."
+`.xyz` (The wildcard).
+`.so` (The Notion clone).
+`.to` (The hacker choice).
+`.wtf` (The chaotic choice).
+
+Finally, you find it. `lux-control.xyz`. It’s available. It’s €2. You feel a rush of adrenaline. You buy it immediately, terrified that a bot is watching your keystrokes and will scalp it if you hesitate for ten seconds.
+
+You have the name. Now you have the obligation.
+
+## The Stack Paralysis
+
+You own the domain. Now you have to build the thing.
+This is where the second boss fight happens: **The Stack.**
+
+You open your terminal on your 2015 Mac Pro. You pause.
+What do I use?
+
+- **Framework:** Next.js? It's heavy, but I know it. Astro? It's fast, but can I do complex state? Svelte? Everyone says it's great, but I don't want to learn new syntax at 4 AM.
+- **Database:** Supabase? Firebase? PlanetScale? A JSON file on the server?
+- **Styling:** Tailwind? (Yes, always Tailwind). But wait, `v3` or `v4` alpha? Do I use Shadcn UI? Do I use Radix? Do I write raw CSS like a psychopath?
+
+You spend 4 hours reading documentation. You watch three YouTube videos comparing "Next.js 15 vs Remix." You read a Reddit thread from 2023 that says "React is dead."
+
+You haven't written a single line of code. You are just architecting a cathedral in your mind while sitting in a mud hut.
+
+Finally, you decide.
+`pnpm create next-app@latest`
+
+You answer the questions:
+
+- TypeScript? **Yes.**
+- ESLint? **Yes.**
+- Tailwind CSS? **Yes.**
+- `src/` directory? **Yes.**
+- App Router? **Yes.** (Even though you hate it sometimes).
+
+You wait for the dependencies to install. The 2015 Mac Pro spins up its fans. The room gets warmer. You sip your Coke Vanilla.
+
+The folder is created. You open it in VS Code.
+
+## The VS Code Aesthetic Trap
+
+You cannot write code in a default editor. That would be unprofessional.
+Before I can type `console.log`, I must ensure my environment matches my mood.
+
+I spend 45 minutes browsing the VS Code Marketplace.
+
+- "One Dark Pro? Too generic."
+- "Dracula? Too 2019."
+- "Tokyo Night? Nice, but maybe too purple."
+- "Catppuccin Mocha?" Perfect.
+
+Then the fonts.
+I have `Fira Code`. I have `JetBrains Mono`. But have I tried `Geist Mono` yet? I download it. I install it. I tweak the line height. I enable ligatures. I spend 20 minutes adjusting the `editor.tokenColorCustomizations` because the blue of the `const` keyword isn't _quite_ Electric Blue enough.
+
+I install **Flow Icons** because the default folder icons are ugly.
+I arrange my sidebar.
+I hide the activity bar because I'm a minimalist.
+
+I have now spent 2 hours "coding."
+My `page.tsx` is still empty.
+
+## The "Just One More Library" Syndrome
+
+I start coding. I need a button.
+I could write `<button className="bg-blue-500 text-white px-4 py-2 rounded">`.
+But wait. What if I need an accessible, keyboard-navigable, WAI-ARIA compliant button with a loading state?
+
+I install `radix-ui`.
+Then I realize I need animations. I install `framer-motion`.
+Then I realize I need form validation. I install `zod` and `react-hook-form`.
+Then I realize I need date formatting. I install `date-fns`.
+Then I realize I need icons. I install `phosphor-icons`.
+
+My `package.json` now has 40 dependencies. The project does nothing yet. It is a blank screen that weighs 5MB.
+My Mac Pro is screaming. The dev server takes 12 seconds to HMR (Hot Module Reload).
+
+I feel productive. I am standing on the shoulders of giants. I am also crushed by the weight of their npm packages.
+
+You delete the boilerplate `page.tsx`. You type:
+
+```tsx
+export default function Home() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center bg-black text-white">
+      <h1 className="text-4xl font-bold">Coming Soon</h1>
+    </main>
+  );
+}
+```
+
+You deploy it to Vercel.
+You visit the URL.
+It says "Coming Soon."
+
+And that is where 90% of my projects die.
+
+## The Feature Creep of Death
+
+The moment you see "Coming Soon" on a live URL, the friction hits.
+
+You realize that "simple idea" is actually a distributed systems problem.
+
+- "Oh, I need a database schema for users."
+- "Wait, how do I handle auth again?"
+- "Supabase or Firebase? I should read the docs for three hours instead of coding."
+- "This font looks weird. I should spend 4 hours browsing Google Fonts."
+
+This is the **Dopamine Cliff**.
+Buying the domain was pure dopamine.
+Initializing the project was pure dopamine.
+Actually building the auth flow? That is work. That is suffering. That is debugging CORS errors at 5 AM.
+
+So you close the tab. You tell yourself, "I'll work on this next weekend."
+You don't work on it next weekend. You play Minecraft. You fix a light fixture in the barn. You buy another domain.
+
+## The Return to the Corpse
+
+Six months later, you remember the project.
+"Oh yeah, `portalbound.xyz`. That was a good idea. I should finish that."
+
+You open the folder.
+You run `npm run dev`.
+
+**Error:** `Error: Node Sass version 6.0.0 is incompatible with ^4.0.0.`
+**Error:** `Hydration failed because the initial UI does not match what was rendered on the server.`
+**Error:** `Next.js 13 is deprecated, please upgrade to 15.`
+
+The ecosystem has moved on without you. Your code is now "Legacy." To fix the project, you have to spend 6 hours upgrading dependencies, fixing breaking changes in the router, and figuring out why `useClient` is screaming at you.
+
+You look at the errors.
+You look at the domain renewal email.
+You close the terminal.
+You go back to `Spaceship.com` to see if a _new_ idea is available.
+
+## The Graveyard Tour
+
+Let's walk through some of the tombstones in my Cloudflare dashboard. It is a museum of abandoned frameworks and half-baked ideas.
+
+### 1. `port3k.buzz`
+
+**The Dream:** Pinterest/Reddit/Twitter for developers. A place to share snippets, setups, and "eyecandy" UI.
+**The Reality:** I spent three weeks designing the perfect masonry grid layout. I learned everything there is to know about CSS Grid and `flex-grow`. I wrote a custom hook for infinite scrolling.
+**The Death:** I realized I would have to write a moderation bot. I realized I would have to store images. I realized databases are hard.
+**Current Status:** Redirects to a Rick Roll.
+
+### 2. `narrato.space`
+
+**The Dream:** A text-based social media for kids. Age-verified. No adults allowed. Pure, wholesome content.
+**The Reality:** I bought the domain because "Space" sounded cool. Then I googled "COPPA laws." Then I googled "GDPR for minors."
+**The Death:** I am a 20-year-old developer, not a lawyer. The legal liability of hosting a platform for children terrified me. I abandoned it before I even ran `npm init`.
+**Current Status:** DNS Error.
+
+### 3. `portalbound.xyz`
+
+**The Dream:** A custom Minecraft server with a custom client. Custom mods. Custom launcher. Total immersion.
+**The Reality:** I actually built this one. It worked. People played on it.
+**The Death:** Hosting a high-performance Minecraft server is expensive. Hosting a custom patcher backend is annoying. I ran out of money after exactly six months.
+**Current Status:** "Server Offline" message in the MOTD.
+
+### 4. `nyra.lol`
+
+**The Dream:** The ultimate Discord multipurpose bot. It would do moderation, music, leveling, and economy.
+**The Reality:** I wrote the bot. It works.
+**The Death:** It's not dead, it's just... "paused." Which is dev-speak for "I am tired of updating it every time Discord changes their API."
+**Current Status:** Online, but barely.
+
+### 5. `electric-fence-monitor.dev` (Fake)
+
+**The Dream:** Hooking up a Raspberry Pi to the pony fence on the farm to monitor voltage in real-time.
+**The Reality:** Ponies don't care about IoT. The WiFi doesn't reach the pasture.
+**The Death:** I realized I don't want to run ethernet cables through a muddy field in November.
+**Current Status:** Expired.
+
+## The Curse of Competence
+
+I hate this hobby. I genuinely do.
+
+It sounds like a superpower. "Oh, you can code? That's amazing! You can build anything!"
+No, it is a curse.
+
+When a normal person encounters a bad app, they get annoyed. They write a 1-star review. They move on with their life.
+When I encounter a bad app, I look at it and think: **"I could build this better in a weekend."**
+
+And that is the trap.
+Because I _can_ build it better. But I can't build it in a weekend. I build it in six months of sleepless nights.
+
+So instead of using a slightly buggy todo list app for $2/month, I spend 100 hours building my own, deploying it to Vercel, debugging database syncing issues, and realizing I just reinvented Apple Reminders but worse.
+
+I have **90 repositories** on GitHub.
+Most of them haven't been touched in two years. They are monuments to my hubris. They are half-finished replacements for Spotify, for Twitter, for Notes.app. They are the digital skeletons of my ego.
+
+And the social cost?
+Because I know how to center a div, everyone assumes I know how to fix a laser printer from 2008.
+
+**"Dustin, my phone won't connect to WiFi."**
+**"Dustin, the printer is making a weird noise."**
+**"Dustin, can you hack my ex's Instagram?"**
+
+I don't know how to fix your printer. I don't use printers. I hate printers. I built a digital signature app specifically so I would never have to touch a printer again.
+But I fix it anyway. Because that is the curse.
+
+## Explaining This to Normal People
+
+The hardest part isn't the code. It's the conversation.
+
+**Ida:** "What did you do all night?"
+**Me:** "I built a landing page."
+**Ida:** "Cool! Can I see it?"
+**Me:** "Well, it's not live yet. I spent 4 hours configuring the linter and choosing a color palette."
+**Ida:** "..."
+**Me:** "But look at this domain! `something-dev.com`. It's hilarious, right?"
+
+Or my parents asking: "How is the computer business going?"
+"Great! I own 32 digital properties."
+"Wow! Do they make money?"
+"No. They cost me €300 a year."
+
+There is no way to explain the joy of a `git init` to someone who hasn't felt it. It is a hobby that looks like work, smells like work, and costs money like a vice.
+
+## Why `dscrd.wtf` is Different
+
+Every once in a while, a project survives the "Hello World" phase.
+
+`dscrd.wtf` survived because it solved a problem I actually had: I hated looking up my Discord User ID. I hated telling people "turn on developer mode, right click my name, copy ID." It was annoying.
+
+It was born out of **spite**, which is the second most powerful fuel source after caffeine (or Fanta Exotic, in my case).
+
+I didn't overthink the stack. I didn't spend weeks on a design system. I grabbed a domain that made me laugh, I grabbed a Next.js template, and I built the damn thing.
+
+It’s ugly (well, it was until we redesigned it). It’s brutalist. It runs on a shoestring budget. But it _ships_.
+
+And that is the lesson I am trying to learn.
+A working website on a weird domain is better than a perfect website that lives on `localhost:3000`.
+
+## The Cycle Continues
+
+Will I stop buying domains?
+Absolutely not.
+
+I will probably buy another one next week. I will see a cool word, check if the `.xyz` or `.io` or `.lol` is available, and my finger will hover over the "Add to Cart" button.
+
+I will tell myself, "This time is different. This time I have a plan."
+I will probably never build the project.
+And I will happily pay the renewal fee next year.
+
+Because looking at a list of 32 domains isn't looking at failures. It's looking at a catalog of ideas. It's a digital sketchbook. It represents the times I was excited about something.
+
+And honestly? `something-dev.com` just looks cool in the address bar.
+
+So here is to the hoarders.
+Here is to the people with 90 repos and 0 deployments.
+Here is to the people who use Cloudflare as a bookmark manager.
+
+We keep the internet weird. And we keep the domain registrars in business.
+
+_(Now if you'll excuse me, I need to go check if `this-one-will-work.xyz` is available.)_
