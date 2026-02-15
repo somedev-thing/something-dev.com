@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
+import rehypeHighlight from "rehype-highlight";
+import rehypeSlug from "rehype-slug";
 
 import { components } from "@/components/mdx/components";
 
@@ -23,7 +25,12 @@ export async function getPostBySlug(slug: string, type: "posts" | "projects" | "
 
   const { content, frontmatter } = await compileMDX<PostMeta>({
     source: fileContent,
-    options: { parseFrontmatter: true },
+    options: { 
+        parseFrontmatter: true,
+        mdxOptions: {
+            rehypePlugins: [rehypeHighlight, rehypeSlug],
+        }
+    },
     components: components,
   });
 

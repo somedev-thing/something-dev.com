@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getPostBySlug, getAllPosts } from "@/lib/mdx";
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
+import { BlogPostReader } from "@/components/BlogPostReader";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts("posts");
@@ -32,9 +33,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           )}
         </header>
         
-        <div className="prose prose-invert prose-lg max-w-none">
+        <BlogPostReader>
           {content}
-        </div>
+        </BlogPostReader>
       </article>
     </main>
   );

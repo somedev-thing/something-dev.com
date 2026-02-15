@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "highlight.js/styles/tokyo-night-dark.css";
 
 @plugin "tailwindcss-animate";
 
@@ -12,22 +13,22 @@
 :root {
   /* BOLD & PLAYFUL THEME */
   --background: #050505; /* Deep Black */
-  --foreground: #FFFFFF;
-  
+  --foreground: #ffffff;
+
   /* NEONS REIMAGINED */
-  --neon-blue: #2563EB; /* Stronger Blue */
-  --neon-purple: #9333EA; /* Stronger Purple */
-  --neon-pink: #DB2777; /* Stronger Pink */
-  --neon-cyan: #0891B2;
-  --neon-yellow: #CA8A04;
+  --neon-blue: #2563eb; /* Stronger Blue */
+  --neon-purple: #9333ea; /* Stronger Purple */
+  --neon-pink: #db2777; /* Stronger Pink */
+  --neon-cyan: #0891b2;
+  --neon-yellow: #ca8a04;
 
   --accent: var(--neon-blue);
-  
+
   /* GLASS */
   --glass: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-hover: rgba(255, 255, 255, 0.1);
-  
+
   --radius: 1.5rem;
 }
 
@@ -43,15 +44,20 @@
   --color-glass: var(--glass);
   --color-glass-border: var(--glass-border);
   --color-glass-hover: var(--glass-hover);
-  
+
   --radius-2xl: var(--radius);
   --radius-xl: 1rem;
-  
+
   --animate-float: float 6s ease-in-out infinite;
-  
+
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 }
 
@@ -61,17 +67,16 @@
 }
 
 @utility text-gradient-main {
-  background: linear-gradient(to right bottom, #FFFFFF, #94A3B8);
+  background: linear-gradient(to right bottom, #ffffff, #94a3b8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 @utility text-gradient-pop {
-  background: linear-gradient(to right, #2563EB, #9333EA);
+  background: linear-gradient(to right, #2563eb, #9333ea);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 
 body {
   background-color: var(--background);
@@ -80,7 +85,12 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-titan), display;
 }
 
