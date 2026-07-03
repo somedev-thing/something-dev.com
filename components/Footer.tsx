@@ -1,8 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight, GithubLogo } from "@phosphor-icons/react/dist/ssr";
 import { config } from "@/lib/config";
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname.startsWith("/horse.exe") || pathname.startsWith("/backstage")) return null;
+
   return (
     <footer className="border-t border-white/10 bg-[#050505] px-6 pb-8 pt-20 md:px-12 md:pt-28">
       <div className="mx-auto max-w-[1500px]">
@@ -52,7 +58,7 @@ export default function Footer() {
             <div className="col-span-2 sm:col-span-1">
               <div className="mb-5 font-mono text-[9px] uppercase tracking-[0.2em] text-white/25">Questionable</div>
               <div className="space-y-3">
-                <Link href="/backstage" className="block font-nav text-sm font-bold text-white/12 transition-colors hover:text-[#ff5c35]">
+                <Link href="/horse.exe" className="block font-nav text-sm font-bold text-white/12 transition-colors hover:text-[#ff5c35]">
                   Do not click
                 </Link>
                 <Link href="/horse.exe" className="block font-nav text-sm font-bold text-white/12 transition-colors hover:text-lime-300">

@@ -35,10 +35,12 @@ export function Navbar() {
     if (logoClicks.current.length >= 5) {
       event.preventDefault();
       logoClicks.current = [];
-      router.push("/backstage");
+      router.push("/horse.exe");
     }
     setMobileOpen(false);
   };
+
+  if (pathname.startsWith("/horse.exe") || pathname.startsWith("/backstage")) return null;
 
   return (
     <>

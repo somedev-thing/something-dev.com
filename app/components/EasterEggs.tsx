@@ -17,7 +17,7 @@ export function EasterEggs() {
         typed = `${typed}${event.key.toLowerCase()}`.slice(-12);
         if (typed.endsWith("rick")) {
           typed = "";
-          router.push("/backstage");
+          router.push("/horse.exe");
         }
       }
 
