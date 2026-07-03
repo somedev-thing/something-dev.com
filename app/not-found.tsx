@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Warning, ArrowUUpLeft, Cube, Skull } from "@phosphor-icons/react/dist/ssr";
+import { ArrowUUpLeft, Skull } from "@phosphor-icons/react/dist/ssr";
 
 export default function NotFound() {
   return (
@@ -29,7 +29,7 @@ export default function NotFound() {
             <p className="text-muted-foreground text-lg leading-relaxed max-w-lg mx-auto font-sans">
                 You have ventured into the void. This page does not exist. 
                 Maybe I deleted it. Maybe you typed it wrong. 
-                Either way, it's gone.
+                Either way, it&apos;s gone.
             </p>
         </div>
 

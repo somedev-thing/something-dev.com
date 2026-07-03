@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Titan_One, Outfit, Lexend, JetBrains_Mono } from "next/font/google";
+import { DM_Sans, Outfit, Lexend, JetBrains_Mono } from "next/font/google";
 import Footer from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
+import { EasterEggs } from "@/app/components/EasterEggs";
 import "./globals.css";
 
-const titanOne = Titan_One({
-  weight: "400",
-  variable: "--font-titan",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
 });
 
@@ -26,8 +26,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dustin | Creative Technologist",
-  description: "Fullstack Engineering. Legacy Constraints. Theater Discipline.",
+  title: {
+    default: "Dustin | Digital Stagehand",
+    template: "%s | something-dev.com",
+  },
+  description: "Websites, bots, game infrastructure, and theater tech built on charmingly inadequate hardware.",
   icons: {
     icon: "/d.png",
   }
@@ -41,10 +44,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${titanOne.variable} ${outfit.variable} ${lexend.variable} ${jetbrainsMono.variable} antialiased font-sans bg-background text-foreground pb-24`}
+        className={`${dmSans.variable} ${outfit.variable} ${lexend.variable} ${jetbrainsMono.variable} antialiased font-sans bg-background text-foreground`}
       >
         <div className="fixed inset-0 z-[-1] bg-noise opacity-[0.04] pointer-events-none mix-blend-overlay"></div>
         <Navbar />
+        <EasterEggs />
         {children}
         <Footer />
       </body>

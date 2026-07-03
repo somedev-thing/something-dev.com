@@ -1,4 +1,4 @@
-import { User, Terminal, Fire, Circuitry, ArrowLeft, Clock,  } from "@phosphor-icons/react/dist/ssr";
+import { Terminal, Fire, Circuitry, ArrowLeft, Clock } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 
 export default function About() {
@@ -41,7 +41,7 @@ export default function About() {
                 <Fire size={48} className="text-neon-pink mb-6" weight="fill" />
                 <h2 className="text-3xl font-bold text-white mb-4">Theater Tech.</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                    Former theater technician. "It works on my machine" doesn't fly when the show is live.
+                    Former theater technician. &quot;It works on my machine&quot; doesn&apos;t fly when the show is live.
                     I build software that performs when the curtain goes up.
                 </p>
             </div>

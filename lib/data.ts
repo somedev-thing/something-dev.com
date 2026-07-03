@@ -4,7 +4,7 @@ export const TOOLKIT = [
     { title: "Frontend", tools: "React 19, Next.js (App Router), Framer Motion, Tailwind V4", icon: MagicWand },
     { title: "Backend", tools: "Node.js, PostgreSQL, Supabase Edge Functions, Redis", icon: TerminalWindow },
     { title: "Hardware", tools: "ESP32, C++, IoT Protocols, High Voltage (Careful)", icon: Cpu },
-    { title: "Legacy", tools: "Optimizing for 2015 Mac Pros and constrained environments.", icon: Lightning },
+    { title: "Legacy", tools: "Optimizing for a 2015 MacBook Pro and constrained environments.", icon: Lightning },
 ];
 
 export const TIMELINE = [

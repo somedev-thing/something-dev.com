@@ -1,17 +1,8 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
 export function ScrollBackground() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
-
   return (
     <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none bg-background">
       {/* 
-        Optimized for 2015 Mac Pro:
+        Optimized for 2015 MacBook Pro:
         - Removed active scroll listeners (JS thread heavy)
         - Replaced framer-motion transforms with CSS animations (Compositor thread)
         - Reduced blur radius slightly to save fill-rate

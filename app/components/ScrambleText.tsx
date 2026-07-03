@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 
 const CHARS = "-_~=+*!@#$%^&()[]{}|;:,.<>?/";
 
@@ -16,7 +16,7 @@ export function ScrambleText({ text, className = "", hover = true, speed = 30 }:
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const isScrambling = useRef(false);
 
-  const scramble = () => {
+  const scramble = useCallback(() => {
     if (isScrambling.current) return;
     isScrambling.current = true;
     
@@ -25,7 +25,7 @@ export function ScrambleText({ text, className = "", hover = true, speed = 30 }:
     if (intervalRef.current) clearInterval(intervalRef.current);
 
     intervalRef.current = setInterval(() => {
-      setDisplayText((prev) => 
+      setDisplayText(() =>
         text
           .split("")
           .map((char, index) => {
@@ -44,13 +44,13 @@ export function ScrambleText({ text, className = "", hover = true, speed = 30 }:
 
       iteration += 1 / 2; // Scramble speed factor
     }, speed);
-  };
+  }, [speed, text]);
 
   useEffect(() => {
     // Initial scramble on mount if not hover-only
     if (!hover) scramble();
     return () => clearInterval(intervalRef.current!);
-  }, []);
+  }, [hover, scramble]);
 
   return (
     <span 

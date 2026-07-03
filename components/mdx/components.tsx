@@ -91,7 +91,6 @@ export const components = {
     />
   ),
   Image: ({ className, alt, ...props }: React.ComponentProps<typeof Image>) => (
-    // eslint-disable-next-line @next/next/no-img-element
     <div className="my-8 rounded-xl overflow-hidden border border-white/10 bg-white/5">
         <Image
             className={cn("w-full h-auto object-cover transition-transform hover:scale-105 duration-700", className)}

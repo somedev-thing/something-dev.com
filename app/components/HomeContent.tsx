@@ -1,34 +1,73 @@
 "use client";
 
 import Link from "next/link";
-import { config } from "@/lib/config";
-import { TOOLKIT } from "@/lib/data";
-import { SpotlightHero } from "./SpotlightHero";
-import { Spotlight } from "./Spotlight";
-import { MagneticButton } from "./MagneticButton";
-import { StarWarp } from "./StarWarp";
-import { ArrowRight, DiscordLogo, SpotifyLogo, Newspaper, Info } from "@phosphor-icons/react/dist/ssr";
 import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Code,
+  DiscordLogo,
+  Globe,
+  Lightning,
+  Newspaper,
+  Play,
+} from "@phosphor-icons/react/dist/ssr";
+import { config } from "@/lib/config";
+import { SpotlightHero } from "./SpotlightHero";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } as const }
-};
+const projects = [
+  {
+    number: "01",
+    title: "nordverkehr.xyz",
+    role: "Website + infrastructure",
+    description: "A German FiveM roleplay city with a public face that feels alive and infrastructure built to keep it that way.",
+    href: "https://nordverkehr.xyz",
+    color: "#ff4938",
+    icon: Globe,
+    tags: ["FiveM", "Web", "Operations"],
+  },
+  {
+    number: "02",
+    title: "atlasmods.org",
+    role: "Minecraft plugins + mods",
+    description: "Minecraft software so good there is no plausible reason for it to be free. Yet here we are.",
+    href: "https://atlasmods.org",
+    color: "#4f8cff",
+    icon: Code,
+    tags: ["Minecraft", "Java", "Free"],
+  },
+  {
+    number: "03",
+    title: "vye.lol",
+    role: "Discord bot",
+    description: "nyra.lol's better successor. Free, polished, and so good it may have unintended physiological side effects.",
+    href: "https://vye.lol",
+    color: "#a970ff",
+    icon: DiscordLogo,
+    tags: ["Discord", "Automation", "Free"],
+  },
+  {
+    number: "04",
+    title: "bohlser-buehne.de",
+    role: "Theater landing page",
+    description: "A local theater site made in seven hours overnight with lots of Pepsi and opening-night urgency.",
+    href: "https://bohlser-buehne.de",
+    color: "#f5c84b",
+    icon: Play,
+    tags: ["Theater", "Design", "7 hours"],
+  },
+];
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
-  }
-};
+const capabilities = [
+  ["01", "Web", "Fast interfaces with a pulse"],
+  ["02", "Infra", "The unglamorous parts that keep working"],
+  ["03", "Bots", "Useful automation without the beige"],
+  ["04", "Stage", "Software that understands showtime"],
+];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } as const }
+const reveal = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 interface HomeContentProps {
@@ -43,233 +82,205 @@ interface HomeContentProps {
 
 export function HomeContent({ posts }: HomeContentProps) {
   return (
-    <main className="min-h-screen bg-void text-white overflow-x-hidden selection:bg-neon-pink/30">
-      
-      <StarWarp />
-
-      {/* 1. SPOTLIGHT HERO */}
+    <main className="min-h-screen overflow-x-clip bg-[#070707] text-white">
       <SpotlightHero />
 
-      {/* 2. BRIEFING (ABOUT) */}
-      <section className="container mx-auto px-4 md:px-12 py-20 pb-32">
-         <motion.div 
+      <section id="work" className="px-6 py-28 md:px-12 md:py-40">
+        <div className="mx-auto max-w-[1500px]">
+          <motion.div
+            variants={reveal}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            variants={fadeInUp}
-            className="grid grid-cols-1 md:grid-cols-12 gap-12"
-         >
-            <div className="md:col-span-4">
-               <div className="flex items-center gap-2 text-neon-pink mb-4 font-mono text-sm uppercase tracking-widest">
-                  <Info size={16} weight="bold" />
-                  <span>Briefing</span>
-               </div>
-               <h2 className="text-4xl md:text-5xl font-bold font-display leading-tight">
-                  Building the <br/>
-                  <span className="text-muted-foreground">Impossible.</span>
-               </h2>
+            className="mb-16 grid gap-8 border-b border-white/10 pb-12 lg:grid-cols-[1fr_32rem] lg:items-end"
+          >
+            <div>
+              <div className="mb-5 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-[#ff5c35]">Selected systems / 2026</div>
+              <h2 className="font-display text-6xl font-black leading-[0.88] tracking-[-0.06em] md:text-8xl lg:text-9xl">
+                OUT IN THE<br />
+                <span className="text-white/20">REAL WORLD.</span>
+              </h2>
             </div>
-            <div className="md:col-span-8 text-lg md:text-xl text-muted-foreground font-sans leading-relaxed space-y-6">
-               <p>
-                  I am a Fullstack Engineer with a background in theatrical production. 
-                  This means I treat every deployment like opening night: <strong className="text-white">it has to work</strong>.
-               </p>
-               <p>
-                  Specializing in React ecosystems, real-time infrastructure, and 
-                  squeezing every ounce of performance out of legacy hardware (yes, even this 2015 MacBook).
-               </p>
-               <div className="pt-4">
-                  <Link href="/about" className="inline-flex items-center gap-2 text-white font-bold hover:text-neon-pink transition-colors">
-                     Read Full Bio <ArrowRight weight="bold" />
-                  </Link>
-               </div>
-            </div>
-         </motion.div>
-      </section>
+            <p className="text-lg leading-relaxed text-white/50 md:text-xl">
+              No imaginary redesigns. No tasteful mockups of apps that do not exist. These are live things for real communities with real users and very real ways to break them.
+            </p>
+          </motion.div>
 
-      {/* 3. OBSIDIAN CARD STREAM */}
-      <div className="container mx-auto px-4 md:px-12 pb-32 space-y-32">
-        
-        {/* Project 1: dscrd.wtf */}
-        <motion.div 
-           initial="hidden"
-           whileInView="visible"
-           viewport={{ once: true, margin: "-100px" }}
-           variants={fadeInUp}
-           className="w-full max-w-6xl mx-auto"
-        >
-           <Spotlight className="rounded-[2.5rem] bg-black/40 backdrop-blur-xl border border-white/10 group">
-             <Link href="https://dscrd.wtf" target="_blank" className="block relative overflow-hidden rounded-[2.5rem]">
-                <div className="flex flex-col-reverse md:grid md:grid-cols-2 min-h-[500px]">
-                    
-                    {/* Content Half */}
-                    <div className="p-6 md:p-16 flex flex-col justify-between z-10 bg-black/40 md:bg-transparent">
-                        <div>
-                             <div className="flex items-center gap-3 mb-6">
-                                <span className="w-2 h-2 rounded-full bg-[#5865F2]" />
-                                <span className="text-sm font-mono text-muted-foreground uppercase tracking-wider">Infrastructure</span>
-                             </div>
-                             {/* Fixed Title Clipping: relaxed leading + py-2 for ascenders/descenders */}
-                             <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white mb-6 leading-normal py-1">dscrd.wtf</h3>
-                             <p className="text-lg md:text-xl text-muted-foreground font-sans max-w-md leading-relaxed">
-                                Premium vanity URLs for the Discord ecosystem.
-                                Serving millions of requests with high-performance edge caching.
-                             </p>
+          <div>
+            {projects.map((project) => {
+              const Icon = project.icon;
+              return (
+                <motion.div
+                  key={project.title}
+                  variants={reveal}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-70px" }}
+                >
+                  <Link
+                    href={project.href}
+                    target="_blank"
+                    className="group relative block overflow-hidden border-b border-white/10 py-9 md:py-12"
+                  >
+                    <div
+                      className="absolute inset-0 -translate-x-full opacity-0 transition-all duration-500 ease-out group-hover:translate-x-0 group-hover:opacity-100"
+                      style={{ background: `linear-gradient(90deg, ${project.color}16, transparent 70%)` }}
+                    />
+                    <div className="relative grid items-start gap-7 md:grid-cols-[4rem_minmax(14rem,0.8fr)_minmax(18rem,1fr)_auto] md:items-center">
+                      <span className="font-mono text-xs tracking-[0.2em] text-white/25">{project.number}</span>
+
+                      <div>
+                        <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em]" style={{ color: project.color }}>
+                          {project.role}
                         </div>
-                        
-                        <div className="flex flex-wrap items-center gap-2 md:gap-4 mt-8 md:mt-12">
-                             <span className="px-3 py-1 md:px-4 md:py-2 rounded-full bg-white/5 border border-white/10 text-xs font-mono">Next.js</span>
-                             <span className="px-3 py-1 md:px-4 md:py-2 rounded-full bg-white/5 border border-white/10 text-xs font-mono">Redis</span>
-                             <div className="ml-auto p-4 rounded-full bg-white text-black group-hover:scale-110 transition-transform hidden md:block">
-                                <ArrowRight size={24} weight="bold" />
-                             </div>
-                        </div>
-                    </div>
-
-                    {/* Visual Half */}
-                    <div className="relative bg-[#5865F2]/10 h-[300px] md:h-auto flex items-center justify-center overflow-hidden">
-                        <DiscordLogo className="text-[#5865F2] w-[400px] h-[400px] absolute opacity-20 blur-3xl" weight="fill" />
-                        <DiscordLogo className="text-[#5865F2] w-[150px] h-[150px] md:w-[200px] md:h-[200px] relative z-10 group-hover:scale-110 transition-transform duration-700" weight="fill" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent md:bg-gradient-to-l" />
-                    </div>
-
-                </div>
-             </Link>
-           </Spotlight>
-        </motion.div>
-
-        {/* Project 2: Musilarity */}
-        <motion.div 
-           initial="hidden"
-           whileInView="visible"
-           viewport={{ once: true, margin: "-100px" }}
-           variants={fadeInUp}
-           className="w-full max-w-6xl mx-auto"
-        >
-           <Spotlight className="rounded-[2.5rem] bg-black/40 backdrop-blur-xl border border-white/10 group">
-             <Link href="https://musilarity.xyz" target="_blank" className="block relative overflow-hidden rounded-[2.5rem]">
-                <div className="flex flex-col md:grid md:grid-cols-2 min-h-[500px]">
-                    
-                    {/* Visual Half */}
-                    <div className="relative bg-[#1DB954]/10 h-[300px] md:h-auto flex items-center justify-center overflow-hidden">
-                        <SpotifyLogo className="text-[#1DB954] w-[400px] h-[400px] absolute opacity-20 blur-3xl" weight="fill" />
-                        <SpotifyLogo className="text-[#1DB954] w-[150px] h-[150px] md:w-[200px] md:h-[200px] relative z-10 group-hover:scale-110 transition-transform duration-700" weight="fill" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent md:bg-gradient-to-r" />
-                    </div>
-
-                    {/* Content Half */}
-                    <div className="p-6 md:p-16 flex flex-col justify-between z-10 bg-black/40 md:bg-transparent">
-                        <div>
-                             <div className="flex items-center gap-3 mb-6">
-                                <span className="w-2 h-2 rounded-full bg-[#1DB954]" />
-                                <span className="text-sm font-mono text-muted-foreground uppercase tracking-wider">Algorithm</span>
-                             </div>
-                             <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white mb-6 leading-normal py-1">Musilarity</h3>
-                             <p className="text-lg md:text-xl text-muted-foreground font-sans max-w-md leading-relaxed">
-                                Mathematical analysis of music taste.
-                                Visualizing the Spotify algorithm through vector space mapping.
-                             </p>
-                        </div>
-                        
-                        <div className="flex flex-wrap items-center gap-2 md:gap-4 mt-8 md:mt-12">
-                             <span className="px-3 py-1 md:px-4 md:py-2 rounded-full bg-white/5 border border-white/10 text-xs font-mono">Spotify API</span>
-                             <span className="px-3 py-1 md:px-4 md:py-2 rounded-full bg-white/5 border border-white/10 text-xs font-mono">Algorithms</span>
-                             <div className="ml-auto p-4 rounded-full bg-white text-black group-hover:scale-110 transition-transform hidden md:block">
-                                <ArrowRight size={24} weight="bold" />
-                             </div>
-                        </div>
-                    </div>
-
-                </div>
-             </Link>
-           </Spotlight>
-        </motion.div>
-
-      </div>
-
-      {/* 4. ARSENAL (Holographic Tech Cards) */}
-      <section className="container mx-auto px-4 md:px-12 py-32 border-t border-white/5">
-         <h2 className="text-6xl md:text-8xl font-bold text-center mb-16 font-display opacity-20">
-            ARSENAL
-         </h2>
-         
-         <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-         >
-            {TOOLKIT.map((tool) => (
-                <Spotlight key={tool.title} className="rounded-3xl bg-white/5 border-white/5 overflow-hidden min-h-[250px] flex flex-col">
-                    <motion.div variants={cardVariants} className="p-8 h-full flex flex-col">
-                        <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-6 text-neon-blue">
-                             <tool.icon size={24} weight="fill" />
-                        </div>
-                        <h3 className="text-xl font-bold font-display text-white mb-2">{tool.title}</h3>
-                        <p className="text-sm text-muted-foreground font-mono leading-relaxed">
-                            {tool.tools}
-                        </p>
-                    </motion.div>
-                </Spotlight>
-            ))}
-         </motion.div>
-      </section>
-
-      {/* 5. TRANSMISSIONS (BLOG) */}
-      <section className="container mx-auto px-4 md:px-12 py-32 border-t border-white/5">
-         <div className="flex items-center justify-between mb-12">
-             <div className="flex items-center gap-2 text-neon-yellow font-mono text-sm uppercase tracking-widest">
-                  <Newspaper size={16} weight="bold" />
-                  <span>Transmissions</span>
-             </div>
-             <Link href="/blog" className="text-sm font-bold hover:text-white transition-colors text-muted-foreground">
-                View All →
-             </Link>
-         </div>
-         
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-             {posts.slice(0, 2).map((post) => (
-                 <Spotlight key={post.slug} className="rounded-3xl bg-white/5 border border-white/5 group cursor-pointer">
-                     <Link href={`/blog/${post.slug}`} className="block p-8 md:p-12">
-                        <span className="text-xs font-mono text-muted-foreground mb-4 block">{post.date}</span>
-                        <h3 className="text-2xl md:text-3xl font-bold font-display text-white mb-4 group-hover:text-neon-yellow transition-colors line-clamp-2">
-                            {post.title}
+                        <h3 className="font-display text-3xl font-black tracking-[-0.045em] text-white md:text-4xl lg:text-5xl">
+                          {project.title}
                         </h3>
-                        <p className="text-muted-foreground font-sans line-clamp-2">
-                            {post.excerpt}
-                        </p>
-                     </Link>
-                 </Spotlight>
-             ))}
-         </div>
+                      </div>
+
+                      <div>
+                        <p className="max-w-2xl text-base leading-relaxed text-white/48 md:text-lg">{project.description}</p>
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {project.tags.map((tag) => (
+                            <span key={tag} className="rounded-full border border-white/10 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.16em] text-white/35">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-3 md:justify-end">
+                        <span
+                          className="flex h-12 w-12 items-center justify-center rounded-full border transition-transform duration-300 group-hover:scale-110"
+                          style={{ color: project.color, borderColor: `${project.color}55`, backgroundColor: `${project.color}0d` }}
+                        >
+                          <Icon size={22} weight="fill" />
+                        </span>
+                        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-black transition-transform duration-300 group-hover:rotate-45">
+                          <ArrowUpRight size={20} weight="bold" />
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <div className="mt-10 flex justify-end">
+            <Link href="/projects" className="group inline-flex items-center gap-3 font-nav font-bold text-white/50 transition-colors hover:text-white">
+              Everything else that escaped localhost
+              <ArrowRight weight="bold" className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </div>
       </section>
 
-      {/* 6. FOOTER / SOCIALS */}
-      <footer className="container mx-auto px-4 md:px-12 pb-20">
-          <div className="flex flex-col items-center gap-12">
-             <div className="flex flex-wrap justify-center gap-8">
-                {config.socials.map((social) => (
-                    <MagneticButton key={social.name} strength={50}>
-                        <Link 
-                            href={social.url} 
-                            target="_blank"
-                            className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-2xl hover:bg-white hover:text-black transition-colors"
-                        >
-                            <social.icon weight="fill" />
-                        </Link>
-                    </MagneticButton>
-                ))}
-             </div>
-             
-             <p className="text-muted-foreground text-sm font-mono text-center">
-                Running on MacBook Pro 2015. <br/>
-                Wait for the fans to spin down. <br />
-                <span className="opacity-50 mt-2 block">© {new Date().getFullYear()} {config.identity.name}</span>
-             </p>
-          </div>
-      </footer>
+      <section className="border-y border-white/10 bg-[#0b0b0b] px-6 py-28 md:px-12 md:py-40">
+        <div className="mx-auto grid max-w-[1500px] gap-16 lg:grid-cols-[1.25fr_0.75fr] lg:gap-24">
+          <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
+            <div className="mb-6 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-[#a3e635]">Operating principle</div>
+            <h2 className="max-w-5xl font-display text-5xl font-black leading-[0.94] tracking-[-0.055em] md:text-7xl lg:text-[6.8rem]">
+              I TURN CAFFEINE-FREE SODA INTO
+              <span className="text-[#a3e635]"> INFRASTRUCTURE.</span>
+            </h2>
+            <p className="mt-9 max-w-2xl text-xl leading-relaxed text-white/48">
+              Theater taught me that deadlines are real, audiences are impatient, and “works on my machine” is not a recovery plan.
+            </p>
+          </motion.div>
 
+          <motion.div
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="self-end"
+          >
+            {capabilities.map(([number, title, copy]) => (
+              <div key={title} className="grid grid-cols-[2.5rem_5rem_1fr] gap-4 border-t border-white/10 py-5 last:border-b">
+                <span className="font-mono text-[10px] text-white/25">{number}</span>
+                <strong className="font-display text-lg text-white">{title}</strong>
+                <span className="text-sm leading-relaxed text-white/40">{copy}</span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="px-6 py-28 md:px-12 md:py-40">
+        <div className="mx-auto max-w-[1500px]">
+          <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="mb-14 flex flex-col justify-between gap-7 md:flex-row md:items-end">
+            <div>
+              <div className="mb-5 flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-[#a970ff]">
+                <Newspaper size={15} weight="fill" /> Field notes
+              </div>
+              <h2 className="font-display text-6xl font-black tracking-[-0.06em] md:text-8xl">LATEST DAMAGE.</h2>
+            </div>
+            <Link href="/blog" className="group inline-flex items-center gap-3 font-nav font-bold text-white/45 transition-colors hover:text-white">
+              All transmissions <ArrowRight className="transition-transform group-hover:translate-x-1" weight="bold" />
+            </Link>
+          </motion.div>
+
+          <div className="grid gap-5 lg:grid-cols-[1.35fr_0.65fr]">
+            {posts.slice(0, 2).map((post, index) => (
+              <motion.div key={post.slug} variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-70px" }}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className={`group relative flex min-h-[30rem] flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 p-8 transition-colors hover:border-white/25 md:p-10 ${
+                    index === 0 ? "bg-[#101010]" : "bg-[#0a0a0a]"
+                  }`}
+                >
+                  <div className={`absolute -right-24 -top-24 h-80 w-80 rounded-full blur-[110px] ${index === 0 ? "bg-[#a970ff]/20" : "bg-[#4f8cff]/15"}`} />
+                  <div className="relative flex items-center justify-between">
+                    <span className="rounded-full border border-white/10 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.18em] text-white/45">{post.category}</span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/25">{post.date}</span>
+                  </div>
+                  <div className="relative">
+                    <h3 className={`font-display font-black leading-[0.98] tracking-[-0.045em] text-white ${index === 0 ? "text-4xl md:text-6xl" : "text-4xl"}`}>
+                      {post.title}
+                    </h3>
+                    <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/45 md:text-lg">{post.excerpt}</p>
+                    <div className="mt-8 inline-flex items-center gap-2 font-nav text-sm font-bold text-white">
+                      Read without adult supervision
+                      <ArrowUpRight className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" weight="bold" />
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 pb-24 md:px-12 md:pb-32">
+        <motion.div
+          variants={reveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="relative mx-auto max-w-[1500px] overflow-hidden rounded-[2.5rem] bg-[#ff5c35] px-7 py-16 text-black md:px-14 md:py-24"
+        >
+          <Lightning className="absolute -right-10 -top-20 h-80 w-80 rotate-12 text-black/10 md:h-[34rem] md:w-[34rem]" weight="fill" />
+          <div className="relative grid gap-12 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div>
+              <div className="mb-6 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-black/55">You have a weird problem?</div>
+              <h2 className="max-w-5xl font-display text-5xl font-black leading-[0.9] tracking-[-0.06em] md:text-8xl lg:text-9xl">
+                GOOD. THOSE ARE THE FUN ONES.
+              </h2>
+            </div>
+            <Link href={`mailto:${config.identity.email}`} className="group inline-flex w-fit items-center gap-3 rounded-full bg-black px-6 py-4 font-nav font-bold text-white transition-transform hover:scale-105">
+              Start something <ArrowUpRight weight="bold" className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          </div>
+          <div className="relative mt-16 flex flex-wrap gap-x-8 gap-y-4 border-t border-black/20 pt-7">
+            {config.socials.map((social) => (
+              <Link key={social.name} href={social.url} target="_blank" className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-black/55 transition-colors hover:text-black">
+                <social.icon size={16} weight="fill" /> {social.name}
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+      </section>
     </main>
   );
 }

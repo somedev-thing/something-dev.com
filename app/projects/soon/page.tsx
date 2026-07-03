@@ -55,7 +55,7 @@ export default function ComingSoonPage() {
         </div>
 
         <p className="text-xs text-muted-foreground/50 max-w-xs text-center">
-            If you are seeing this, the domain works but the code doesn't. 
+            If you are seeing this, the domain works but the code doesn&apos;t.
             Check back when I feel like finishing it.
         </p>
       </div>

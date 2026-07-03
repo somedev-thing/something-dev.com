@@ -1,153 +1,147 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
-import { GithubLogo, DiscordLogo, List, X } from "@phosphor-icons/react/dist/ssr";
-import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { ArrowUpRight, List, X } from "@phosphor-icons/react/dist/ssr";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { config } from "@/lib/config";
-import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const logoClicks = useRef<number[]>([]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
+
+  const handleLogoClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const now = Date.now();
+    logoClicks.current = [...logoClicks.current.filter((time) => now - time < 2400), now];
+    if (logoClicks.current.length >= 5) {
+      event.preventDefault();
+      logoClicks.current = [];
+      router.push("/backstage");
+    }
+    setMobileOpen(false);
+  };
 
   return (
     <>
-    <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
-      scrolled 
-        ? "bg-black/50 backdrop-blur-xl border-white/5 py-4" 
-        : "bg-transparent border-transparent py-8"
-    )}>
-      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group z-50" onClick={() => setMobileOpen(false)}>
-            <div className="relative w-8 h-8 md:w-10 md:h-10 transition-transform group-hover:scale-110">
-                <Image 
-                    src="/d.png" 
-                    alt="Dustin Logo" 
-                    fill 
-                    className="object-contain"
-                />
-            </div>
-            <span className={cn(
-                "text-lg font-bold text-white transition-opacity font-display",
-                scrolled || mobileOpen ? "opacity-100" : "opacity-0 md:opacity-100"
-            )}>
-                {config.identity.siteName.toUpperCase().replace(".COM", "").replace("-", " ")}
-            </span>
-        </Link>
-        
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6 bg-white/5 backdrop-blur-md border border-white/5 rounded-full px-6 py-2">
-            {config.nav.map((link) => (
-                <Link 
-                    key={link.name} 
-                    href={link.href} 
-                    className={cn(
-                        "text-sm font-bold transition-colors font-nav", 
-                        pathname === link.href ? "text-white" : "text-white/60 hover:text-white"
-                    )}
-                >
-                    {link.name}
-                </Link>
-            ))}
-        </nav>
-        
-        {/* Desktop Socials / CTA */}
-        <div className="hidden md:flex items-center gap-4">
-             <Link 
-                href="https://github.com/somedev-thing" 
-                target="_blank"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 hover:bg-white hover:text-black transition-all border border-white/10"
-            >
-                <GithubLogo size={20} weight="fill" />
-            </Link>
-             <Link 
-                href="https://dscrd.wtf/?from=something-dev" 
-                target="_blank"
-                className="group relative px-6 py-2 rounded-full font-bold font-nav overflow-hidden transition-all hover:scale-105 shadow-[0_0_20px_rgba(88,101,242,0.5)] hover:shadow-[0_0_40px_rgba(88,101,242,0.7)]"
-            >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#5865F2] to-[#404EED] opacity-100 group-hover:opacity-90 transition-opacity" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#5865F2] via-white to-[#5865F2] opacity-0 group-hover:opacity-20 animate-shine" />
-                <span className="relative z-10 text-white flex items-center gap-2">
-                    <DiscordLogo weight="fill" /> dscrd.wtf
-                </span>
-            </Link>
-        </div>
-
-        {/* Mobile Toggle */}
-        <button 
-            className="md:hidden z-50 w-10 h-10 flex items-center justify-center text-white"
-            onClick={() => setMobileOpen(!mobileOpen)}
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-5">
+        <div
+          className={cn(
+            "pointer-events-auto mx-auto flex max-w-[1500px] items-center justify-between rounded-2xl border px-4 transition-all duration-300 md:px-5",
+            scrolled
+              ? "border-white/10 bg-[#080808]/88 py-3 shadow-2xl shadow-black/30 backdrop-blur-xl"
+              : "border-transparent bg-transparent py-4"
+          )}
         >
-            {mobileOpen ? <X size={24} /> : <List size={24} />}
-        </button>
+          <Link href="/" onClick={handleLogoClick} className="group flex items-center gap-3" aria-label="something-dev.com home">
+            <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl bg-white text-sm font-black text-black">
+              D
+              <span className="absolute bottom-1 right-1 h-1.5 w-1.5 rounded-full bg-[#ff5c35] transition-transform group-hover:scale-[2.4]" />
+            </span>
+            <span className="hidden font-display text-sm font-black leading-none tracking-[-0.035em] text-white sm:block">
+              SOMETHING<br />
+              <span className="text-white/35">DEV</span>
+            </span>
+          </Link>
 
-      </div>
-    </nav>
+          <nav className="hidden items-center gap-1 rounded-full border border-white/8 bg-white/[0.025] p-1 md:flex" aria-label="Main navigation">
+            {config.nav.map((link, index) => {
+              const active = pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={cn(
+                    "relative rounded-full px-4 py-2 font-nav text-xs font-bold transition-colors",
+                    active ? "bg-white text-black" : "text-white/48 hover:text-white"
+                  )}
+                >
+                  <span className={cn("mr-1.5 font-mono text-[8px]", active ? "text-black/40" : "text-white/20")}>
+                    {(index + 1).toString().padStart(2, "0")}
+                  </span>
+                  {link.name}
+                </Link>
+              );
+            })}
+          </nav>
 
-    {/* Mobile Overlay */}
-    <AnimatePresence>
-        {mobileOpen && (
-            <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.2 }}
-                className="fixed inset-0 z-40 bg-black/90 backdrop-blur-2xl flex flex-col justify-center items-center gap-8 md:hidden"
+          <div className="hidden items-center gap-4 md:flex">
+            <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/25">Berlin time / probably awake</span>
+            <Link
+              href={`mailto:${config.identity.email}`}
+              className="group inline-flex items-center gap-2 rounded-full bg-[#ff5c35] px-4 py-2.5 font-nav text-xs font-bold text-black transition-transform hover:scale-105"
             >
-                {config.nav.map((link) => (
-                    <Link 
-                        key={link.name} 
-                        href={link.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="text-4xl font-bold font-display text-white hover:text-neon-blue transition-colors"
-                    >
-                        {link.name}
-                    </Link>
-                ))}
+              Make trouble
+              <ArrowUpRight weight="bold" className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          </div>
 
-                <div className="flex gap-6 mt-8">
-                     <Link 
-                        href="https://github.com/somedev-thing" 
-                        target="_blank"
-                        className="p-4 rounded-full bg-white/10 hover:bg-white hover:text-black transition-all"
-                    >
-                        <GithubLogo size={32} weight="fill" />
-                    </Link>
-                     <Link 
-                        href="https://dscrd.wtf" 
-                        target="_blank"
-                        className="p-4 rounded-full bg-[#5865F2]/20 text-[#5865F2] hover:bg-[#5865F2] hover:text-white transition-all"
-                    >
-                        <DiscordLogo size={32} weight="fill" />
-                    </Link>
-                </div>
-            </motion.div>
+          <button
+            type="button"
+            onClick={() => setMobileOpen((open) => !open)}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white md:hidden"
+            aria-expanded={mobileOpen}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileOpen ? <X size={20} /> : <List size={20} />}
+          </button>
+        </div>
+      </header>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.22 }}
+            className="fixed inset-0 z-40 flex flex-col bg-[#080808] px-6 pb-8 pt-28 md:hidden"
+          >
+            <div className="project-grid absolute inset-0 opacity-35" />
+            <nav className="relative flex flex-1 flex-col justify-center" aria-label="Mobile navigation">
+              {config.nav.map((link, index) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="group flex items-center justify-between border-t border-white/10 py-5 last:border-b"
+                >
+                  <span className="font-display text-4xl font-black tracking-[-0.05em] text-white transition-colors group-hover:text-[#ff5c35]">
+                    {link.name}
+                  </span>
+                  <span className="font-mono text-xs text-white/25">{(index + 1).toString().padStart(2, "0")}</span>
+                </Link>
+              ))}
+            </nav>
+            <div className="relative flex items-end justify-between border-t border-white/10 pt-6">
+              <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/30">
+                Five logo taps<br />may void your warranty
+              </div>
+              <Link href={`mailto:${config.identity.email}`} className="rounded-full bg-[#ff5c35] px-5 py-3 font-nav text-sm font-bold text-black">
+                Say hello
+              </Link>
+            </div>
+          </motion.div>
         )}
-    </AnimatePresence>
+      </AnimatePresence>
     </>
   );
 }

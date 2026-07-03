@@ -1,206 +1,207 @@
-import { 
-  Desktop, Cpu, Memory, HardDrives, 
-  Code, TerminalWindow, Globe, PenNib, BookOpen, 
-  Layout, Palette, Database, BracketsCurly, Cloud,
-  Lightbulb, Play, Sliders, Lightning, Warning
+import {
+  ArrowLeft,
+  BookOpen,
+  BracketsCurly,
+  Cloud,
+  Code,
+  Cpu,
+  Database,
+  Globe,
+  HardDrives,
+  Laptop,
+  Layout,
+  Lightbulb,
+  Lightning,
+  Memory,
+  Palette,
+  Play,
+  Sliders,
+  TerminalWindow,
 } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
+
+const dailyDrivers = [
+  {
+    title: "Editor",
+    value: "IntelliJ IDEA",
+    note: "VS Code has left the building. The IDE now knows more about my project than I do.",
+    icon: Code,
+    color: "#fb7185",
+  },
+  {
+    title: "Terminal",
+    value: "iTerm2 + Oh My Zsh",
+    note: "If the command fails, at least the prompt looks expensive.",
+    icon: TerminalWindow,
+    color: "#fb923c",
+  },
+  {
+    title: "Browser",
+    value: "Zen",
+    note: "Vertical tabs, because horizontal space is precious on thirteen inches.",
+    icon: Globe,
+    color: "#c084fc",
+  },
+  {
+    title: "Design",
+    value: "Figma",
+    note: "I arrange rectangles until somebody calls it a design system.",
+    icon: Palette,
+    color: "#f472b6",
+  },
+  {
+    title: "Notes",
+    value: "Obsidian",
+    note: "A beautifully linked graph of thoughts I will definitely revisit.",
+    icon: BookOpen,
+    color: "#facc15",
+  },
+];
+
+const stack = [
+  { label: "Frontend", value: "Next.js 16, React 19, Framer Motion", icon: Layout },
+  { label: "Styling", value: "Tailwind CSS 4 and occasional actual CSS", icon: Palette },
+  { label: "Backend", value: "Node.js, PostgreSQL, Supabase, Redis", icon: Database },
+  { label: "Languages", value: "TypeScript, JavaScript, Java, Lua, Python, C", icon: BracketsCurly },
+  { label: "Operations", value: "Cloudflare, Vercel, Linux, Git, stubbornness", icon: Cloud },
+];
 
 export default function Uses() {
   return (
-    <main className="min-h-screen pt-32 pb-40 px-6 max-w-6xl mx-auto">
-      
-      <div className="mb-20">
-        <Link href="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-white transition-colors mb-8 font-bold">
-            <ArrowLeft /> Back Home
+    <main className="min-h-screen pt-32 pb-40 px-6 max-w-7xl mx-auto">
+      <header className="mb-20 border-b border-white/10 pb-16">
+        <Link href="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-white transition-colors mb-12 font-bold">
+          <ArrowLeft /> Back home
         </Link>
-        <span className="text-neon-blue font-bold uppercase tracking-widest mb-4 block font-sans">The Setup</span>
-        <h1 className="text-6xl md:text-9xl font-bold tracking-tighter text-white mb-6 leading-none font-display">
-            LEGACY RIG.
-        </h1>
-        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl leading-relaxed font-sans">
-            "Constraint breeds creativity." <br />
-            <span className="text-sm opacity-50">(Also, hardware upgrades are expensive.)</span>
-        </p>
-      </div>
+        <span className="text-neon-blue font-mono uppercase tracking-[0.28em] text-xs mb-5 block">The very constrained setup</span>
+        <div className="grid lg:grid-cols-[1fr_auto] gap-10 items-end">
+          <h1 className="text-6xl md:text-[8.5rem] font-display tracking-[-0.055em] text-white leading-[0.8]">
+            EIGHT GIG<br />
+            <span className="text-white/20">WORKHORSE.</span>
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-md lg:text-right leading-relaxed">
+            A development setup balanced carefully between professional software and the spinning beach ball of death.
+          </p>
+        </div>
+      </header>
 
-      <div className="space-y-12">
-        
-        {/* THE TRASHCAN */}
-        <div className="rounded-[3rem] bg-[#0A0A0A] border border-white/10 p-10 md:p-16 relative overflow-hidden group">
-             <div className="absolute right-[-10%] top-[-10%] opacity-5 group-hover:opacity-10 transition-opacity">
-                <Desktop size={400} weight="fill" className="text-white" />
-             </div>
-             
-             <div className="relative z-10">
-                 <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-3 font-display">
-                    <Desktop className="text-neon-blue" weight="fill" /> The Trashcan (Primary Station)
-                 </h2>
-                 
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                     <div className="space-y-6">
-                        <div className="p-6 bg-white/5 rounded-2xl border border-white/5">
-                            <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1 font-sans">Model</h3>
-                            <p className="text-xl font-bold text-white font-display">Mac Pro (Late 2015)</p>
-                            <p className="text-sm text-muted-foreground mt-1">The Cylindrical Heater.</p>
-                        </div>
-                        <div className="p-6 bg-white/5 rounded-2xl border border-white/5">
-                            <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1 font-sans">Status</h3>
-                             <p className="text-xl font-bold text-red-500 font-sans">Legacy / End of Life</p>
-                             <p className="text-sm text-muted-foreground mt-1">Surviving purely on spite.</p>
-                        </div>
-                     </div>
+      <div className="space-y-6">
+        <section className="rounded-[2.5rem] border border-white/10 overflow-hidden relative bg-[#080808]">
+          <div className="absolute inset-0 project-grid opacity-40" />
+          <div className="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-neon-blue/20 blur-[110px]" />
+          <div className="relative p-8 md:p-14">
+            <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-12">
+              <div className="max-w-xl">
+                <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-neon-blue mb-6">
+                  <Laptop size={20} weight="fill" /> Primary machine
+                </div>
+                <h2 className="text-4xl md:text-6xl font-display mb-5">MacBook Pro 12,1</h2>
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  The 13-inch Early 2015 model. It is old enough to have opinions about modern JavaScript and compact enough to heat one lap at a time.
+                </p>
+                <div className="inline-flex items-center gap-2 mt-8 rounded-full border border-lime-300/20 bg-lime-300/5 px-4 py-2 font-mono text-xs uppercase tracking-wider text-lime-300">
+                  <span className="w-2 h-2 rounded-full bg-lime-300" /> Still shipping
+                </div>
+              </div>
 
-                     <div className="space-y-4">
-                         <div className="flex items-center gap-4 p-4 border-b border-white/5">
-                             <Cpu size={32} weight="fill" className="text-white" />
-                             <div>
-                                 <span className="block font-bold text-white">Processor</span>
-                                 <span className="text-muted-foreground text-sm">Intel Xeon E5 (Quad Core). It tries its best.</span>
-                             </div>
-                         </div>
-                         <div className="flex items-center gap-4 p-4 border-b border-white/5">
-                             <Memory size={32} weight="fill" className="text-white" />
-                             <div>
-                                 <span className="block font-bold text-white">Memory</span>
-                                 <span className="text-muted-foreground text-sm">8GB DDR3 (ECC). Chrome tabs are a luxury.</span>
-                             </div>
-                         </div>
-                         <div className="flex items-center gap-4 p-4 border-b border-white/5">
-                             <HardDrives size={32} weight="fill" className="text-white" />
-                             <div>
-                                 <span className="block font-bold text-white">Storage</span>
-                                 <span className="text-muted-foreground text-sm">120GB SSD. I live life one "Disk Space Full" warning at a time.</span>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
+              <div className="grid sm:grid-cols-3 lg:grid-cols-1 gap-3 min-w-0 lg:min-w-[390px]">
+                {[
+                  { label: "Processor", value: "Dual-core Intel Core i5", note: "Two brave little cores", icon: Cpu },
+                  { label: "Memory", value: "8 GB RAM", note: "Every megabyte has a job", icon: Memory },
+                  { label: "Storage", value: "120 GB", note: "Caches are temporary enemies", icon: HardDrives },
+                ].map((spec) => {
+                  const Icon = spec.icon;
+                  return (
+                    <div key={spec.label} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-black/40 p-5">
+                      <Icon size={28} className="text-white/65 shrink-0" weight="fill" />
+                      <div>
+                        <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/35">{spec.label}</div>
+                        <div className="font-bold text-white">{spec.value}</div>
+                        <div className="text-xs text-muted-foreground">{spec.note}</div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="rounded-[2.5rem] bg-[#080808] border border-white/10 p-8 md:p-12">
+          <div className="flex items-center gap-3 mb-8">
+            <Code size={30} className="text-green-400" weight="fill" />
+            <h2 className="text-3xl font-display">DAILY DRIVERS</h2>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {dailyDrivers.map((tool) => {
+              const Icon = tool.icon;
+              return (
+                <div key={tool.title} className="rounded-2xl border border-white/10 bg-white/[0.025] p-6 hover:bg-white/[0.06] transition-colors">
+                  <Icon size={30} className="mb-8" weight="fill" style={{ color: tool.color }} />
+                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/35 mb-1">{tool.title}</div>
+                  <h3 className="font-bold text-white text-lg mb-3">{tool.value}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{tool.note}</p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        <div className="grid lg:grid-cols-3 gap-6">
+          <section className="lg:col-span-2 rounded-[2.5rem] bg-[#080808] border border-white/10 p-8 md:p-12">
+            <div className="flex items-center gap-3 mb-8">
+              <Lightning size={30} className="text-yellow-400" weight="fill" />
+              <h2 className="text-3xl font-display">CHAOS STACK</h2>
+            </div>
+            <div>
+              {stack.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.label} className="grid sm:grid-cols-[180px_1fr] gap-3 border-t border-white/10 py-5 first:border-t-0">
+                    <div className="flex items-center gap-3 text-white font-bold">
+                      <Icon className="text-white/40" /> {item.label}
+                    </div>
+                    <div className="text-muted-foreground sm:text-right">{item.value}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
+          <section className="rounded-[2.5rem] border border-yellow-300/15 p-8 md:p-10 bg-gradient-to-b from-yellow-300/10 to-[#080808] flex flex-col justify-between">
+            <Lightning size={54} weight="fill" className="text-yellow-300 mb-10" />
+            <div>
+              <div className="font-mono text-xs uppercase tracking-[0.2em] text-yellow-300 mb-3">System fuel</div>
+              <h2 className="text-4xl font-display mb-4">NO COFFEE.</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Coke Vanilla, Fanta Exotic, Pepsi, and the fear of a production outage.
+              </p>
+            </div>
+          </section>
         </div>
 
-        {/* DAILY DRIVERS */}
-        <div className="rounded-[3rem] bg-[#0A0A0A] border border-white/10 p-10">
-             <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-3 font-display">
-                <Code className="text-green-500" weight="fill" /> Daily Drivers
-             </h2>
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
-                    <Code size={32} className="text-blue-400 mb-4" weight="fill" />
-                    <h3 className="font-bold text-white mb-2">Editor</h3>
-                    <p className="text-sm text-muted-foreground">VS Code. <br/>Theme: <strong>Catppuccin Mocha</strong>.<br/>Icon Pack: <strong>Flow</strong>.</p>
+        <section className="rounded-[2.5rem] bg-[#080808] border border-white/10 p-8 md:p-12">
+          <div className="flex items-center gap-3 mb-8">
+            <Play size={30} className="text-red-400" weight="fill" />
+            <h2 className="text-3xl font-display">THE PHYSICAL REALM</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-4">
+            {[
+              { title: "Lighting", value: "Daslight 5 with MPC", icon: Lightbulb, color: "#fde68a" },
+              { title: "Show control", value: "QLab 5, the reliable adult", icon: Play, color: "#4ade80" },
+              { title: "Hardware", value: "Enttec nodes and physical faders", icon: Sliders, color: "#93c5fd" },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.title} className="rounded-2xl border border-white/10 p-7 bg-white/[0.025]">
+                  <Icon size={36} weight="fill" className="mb-6" style={{ color: item.color }} />
+                  <h3 className="font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.value}</p>
                 </div>
-                <div className="p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
-                    <TerminalWindow size={32} className="text-orange-400 mb-4" weight="fill" />
-                    <h3 className="font-bold text-white mb-2">Terminal</h3>
-                    <p className="text-sm text-muted-foreground">iTerm2 + OhMyZsh.<br/>(If I can't code well, I can at least look cool doing it).</p>
-                </div>
-                <div className="p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
-                    <Globe size={32} className="text-purple-400 mb-4" weight="fill" />
-                    <h3 className="font-bold text-white mb-2">Browser</h3>
-                    <p className="text-sm text-muted-foreground">Zen.<br/>Because vertical tabs are the future.</p>
-                </div>
-                <div className="p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
-                    <PenNib size={32} className="text-pink-400 mb-4" weight="fill" />
-                    <h3 className="font-bold text-white mb-2">Design</h3>
-                    <p className="text-sm text-muted-foreground">Figma.<br/>Where I draw rectangles and call it "UI/UX".</p>
-                </div>
-                <div className="p-6 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
-                    <BookOpen size={32} className="text-yellow-400 mb-4" weight="fill" />
-                    <h3 className="font-bold text-white mb-2">Docs</h3>
-                    <p className="text-sm text-muted-foreground">Obsidian.<br/>The only place my thoughts are organized.</p>
-                </div>
-             </div>
-        </div>
-
-        {/* THE FULLSTACK */}
-        <div className="rounded-[3rem] bg-[#0A0A0A] border border-white/10 p-10">
-             <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-3 font-display">
-                <Lightning className="text-yellow-500" weight="fill" /> The Fullstack (Chaos Edition)
-             </h2>
-             <ul className="space-y-4">
-                <li className="flex justify-between items-center border-b border-white/5 pb-2">
-                    <div className="flex items-center gap-3">
-                        <Layout className="text-white/50" /> <span className="text-white font-medium">Frontend</span>
-                    </div>
-                    <span className="text-muted-foreground text-sm text-right">Next.js 15 (Bleeding Edge), React 19</span>
-                </li>
-                <li className="flex justify-between items-center border-b border-white/5 pb-2">
-                    <div className="flex items-center gap-3">
-                        <Palette className="text-white/50" /> <span className="text-white font-medium">Styling</span>
-                    </div>
-                    <span className="text-muted-foreground text-sm text-right">Tailwind CSS v4. Writing actual CSS is so 2015.</span>
-                </li>
-                 <li className="flex justify-between items-center border-b border-white/5 pb-2">
-                    <div className="flex items-center gap-3">
-                        <Database className="text-white/50" /> <span className="text-white font-medium">Backend</span>
-                    </div>
-                    <span className="text-muted-foreground text-sm text-right">Supabase (Postgres for dummies), Node.js</span>
-                </li>
-                 <li className="flex flex-col md:flex-row justify-between md:items-center border-b border-white/5 pb-2 gap-2">
-                    <div className="flex items-center gap-3">
-                        <BracketsCurly className="text-white/50" /> <span className="text-white font-medium">Languages</span>
-                    </div>
-                    <div className="text-right text-sm">
-                        <span className="block text-white">Daily: TypeScript, JS, HTML/CSS</span>
-                        <span className="block text-muted-foreground">Scripting: Lua, Python</span>
-                        <span className="block text-red-400">Legacy: Java (Minecraft), C (Pain)</span>
-                    </div>
-                </li>
-                <li className="flex justify-between items-center border-b border-white/5 pb-2">
-                    <div className="flex items-center gap-3">
-                         <Cloud className="text-white/50" /> <span className="text-white font-medium">DevOps</span>
-                    </div>
-                    <span className="text-muted-foreground text-sm text-right">Vercel, Cloudflare, Git</span>
-                </li>
-             </ul>
-        </div>
-
-        {/* THE PHYSICAL REALM */}
-        <div className="rounded-[3rem] bg-[#0A0A0A] border border-white/10 p-10">
-             <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-3 font-display">
-                <Play className="text-red-500" weight="fill" /> The Physical Realm (Theater Tech)
-             </h2>
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                 <div className="p-6 bg-white/5 rounded-2xl border border-white/5">
-                     <Lightbulb size={40} className="mx-auto mb-4 text-yellow-200" weight="fill" />
-                     <h3 className="font-bold text-white mb-2">Lighting</h3>
-                     <p className="text-muted-foreground text-sm">Daslight 5 w/ MPC.</p>
-                 </div>
-                 <div className="p-6 bg-white/5 rounded-2xl border border-white/5">
-                     <Play size={40} className="mx-auto mb-4 text-green-400" weight="fill" />
-                     <h3 className="font-bold text-white mb-2">Show Control</h3>
-                     <p className="text-muted-foreground text-sm">QLab 5. <br/>The only software that doesn't crash.</p>
-                 </div>
-                 <div className="p-6 bg-white/5 rounded-2xl border border-white/5">
-                     <Sliders size={40} className="mx-auto mb-4 text-blue-300" weight="fill" />
-                     <h3 className="font-bold text-white mb-2">Hardware</h3>
-                     <p className="text-muted-foreground text-sm">Enttec Nodes, Physical Faders.<br/>(Backup strategy: Panic).</p>
-                 </div>
-             </div>
-        </div>
-
-        {/* SYSTEM FUEL */}
-        <div className="rounded-[3rem] bg-glass border border-glass-border p-10 flex flex-col md:flex-row items-center justify-between gap-8">
-             <div className="flex items-center gap-6">
-                <Lightning size={64} weight="fill" className="text-neon-yellow" />
-                <div>
-                     <h2 className="text-2xl font-bold text-white font-display">System Fuel</h2>
-                     <p className="text-muted-foreground">Liquid & Mental State.</p>
-                </div>
-             </div>
-             <div className="text-right space-y-2">
-                 <p className="text-lg text-white">
-                     <span className="text-muted-foreground font-bold uppercase text-xs tracking-widest mr-3">Liquid</span>
-                     Coke Vanilla, Fanta Exotic. <span className="text-red-500 font-bold">(No Coffee)</span>.
-                 </p>
-                 <p className="text-lg text-white">
-                     <span className="text-muted-foreground font-bold uppercase text-xs tracking-widest mr-3">Mental</span>
-                     The fear of a production outage.
-                 </p>
-             </div>
-        </div>
-
+              );
+            })}
+          </div>
+        </section>
       </div>
     </main>
   );

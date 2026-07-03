@@ -1,42 +1,271 @@
 ---
-title: "Why I Still Use A 2015 Mac Pro"
-date: "Feb 14, 2026"
-excerpt: "Constraints breed creativity. Or maybe I'm just cheap. Here's why legacy hardware makes me a better developer."
-category: "Engineering"
+title: "Eight Gigabytes of RAM and the Audacity to Open IntelliJ"
+date: "Jul 3, 2026"
+excerpt: "A survival report from a 2015 MacBook Pro, an IDE with an appetite, and a developer who refuses to buy a sensible computer."
+description: "A survival report from a 2015 MacBook Pro, an IDE with an appetite, and a developer who refuses to buy a sensible computer."
+category: "Rant"
 ---
 
-Most developers in 2026 are running on M5 Max chips with 128GB of unified memory. They spin up 20 docker containers, run 3 Electron apps, and leave 50 Chrome tabs open without blinking.
+There are developers who begin their morning by opening a brand new MacBook Pro with a chip called something like M7 Ultra Mega Ranch Edition. The machine has 96 gigabytes of unified memory, a screen capable of showing colors that have not yet been discovered by science, and enough battery life to survive a transatlantic flight, a layover, and three hours of pretending to work at the hotel.
 
-**I don't have that luxury.**
+I am not one of those developers.
 
-I code on a **2015 Mac Pro (Trash Can Edition)**.
+My primary machine is a **13-inch MacBook Pro from Early 2015**. Model identifier **12,1**. Dual-core Intel Core i5. Eight gigabytes of RAM. A 120 GB drive that treats every package manager cache as a personal attack.
 
-- **CPU**: Intel i5 something (whatever apple put in there...)
-- **RAM**: 8GB DDR3 (ECC)
-- **Storage**: 120GB SSD
+This laptop is not a workstation. It is a hostage negotiation with a keyboard.
 
-## The Constraint
+And recently, because apparently I felt life was too calm, I stopped using VS Code and moved to **IntelliJ IDEA**.
 
-When your computer screams if you open too many tabs, you learn to **close tabs**.
-When your build takes 45 seconds, you learn to **write clean code** the first time.
-When your local server crashes because of memory leaks, you learn to **fix the leaks**.
+Yes, IntelliJ.
 
-Modern web development has become lazy. We ship 5MB JavaScript bundles because "everyone has fast internet." We build unoptimized React apps because "devices are fast."
+On eight gigabytes of RAM.
 
-My device isn't fast. Browsing the modern web on this machine is painful.
-And that's why I use it.
+Please lower your voice. The laptop can hear you.
 
-## If it runs here, it flies there.
+## Meet the machine
 
-If I can make a website feel instant on this 11-year-old trash can, it will feel like magic on your iPhone 17.
-Constraints aren't a bug. They're a feature.
+The 2015 MacBook Pro is from a different period of Apple history. It has ports. Real ports. HDMI. USB-A. An SD card slot. MagSafe. You can connect something to it without first purchasing a small aluminum dongle that costs as much as a family dinner.
 
-## The Stack
+It also has a glowing Apple logo, which provides no technical value but adds at least twelve percent more drama when the room is dark.
 
-This website is built with:
+The keyboard has actual travel. The function keys are physical. There is no Touch Bar offering me a context-sensitive emoji while I am trying to escape Vim. It is a computer built during the brief golden age when Apple still believed professionals occasionally needed to plug things into other things.
 
-- **Next.js 16** (App Router)
-- **Tailwind CSS v4**
-- **Phosphor Icons**
+Inside this beautiful artifact are two CPU cores.
 
-No heavy libraries. No massive tracking scripts. Just code.
+Two.
+
+One core runs my application. The other considers running my application.
+
+When both agree to cooperate, the fans begin a ceremonial chant. At first it is a soft whisper. Then it becomes a hair dryer. Then the MacBook achieves vertical takeoff and joins regional air traffic.
+
+The RAM situation is more intimate. Eight gigabytes sounds workable until you remember that modern software sees memory the way a Labrador sees an unattended sandwich.
+
+macOS wants some.
+
+The browser wants some.
+
+Docker wants all of it.
+
+IntelliJ arrives with a plate and asks whether there will be dessert.
+
+## Why I left VS Code
+
+VS Code and I had a long relationship. It was comfortable. Familiar. I had a theme. I had icons. I had settings synchronized across machines I do not own. I had seventeen extensions installed to recreate features that a full IDE simply has.
+
+That was the first crack.
+
+I opened VS Code to write TypeScript, and it needed extensions for linting, formatting, Git history, better errors, database access, spell checking, bracket colors, remote development, Docker, Java, and probably emotional support.
+
+Every extension promised to make me more productive.
+
+Together, they formed a tiny unelected government.
+
+One extension formatted on save. Another extension also formatted on save. A third extension warned me that the first two formatters disagreed. The status bar looked like the dashboard of a submarine. Somewhere in the lower right corner, a blue circle spun forever because a language server was indexing `node_modules` for reasons known only to God.
+
+Then I started doing more Java work.
+
+VS Code can absolutely do Java. A butter knife can also turn a screw. The result depends on how much dignity you are willing to lose.
+
+I installed the Java extension pack, which is less of an extension and more of a family moving into your house. Suddenly there were language servers, debuggers, test runners, project managers, and a tiny Maven priest blessing the classpath.
+
+It worked.
+
+Technically.
+
+But every time I renamed something, I felt the need to check behind me and make sure all the references had actually changed. Refactoring should feel like using a power tool. In VS Code, Java refactoring sometimes felt like asking a polite intern to search the building.
+
+So I opened IntelliJ.
+
+## IntelliJ enters the chat
+
+IntelliJ did not open. IntelliJ **arrived**.
+
+The splash screen appeared with the confidence of enterprise software that knows exactly how much memory it is about to consume. A progress bar announced that it was loading components. Then it indexed the project. Then it indexed the SDK. Then it indexed the indexes.
+
+My MacBook fans immediately applied for overtime.
+
+But once it finished, something suspicious happened.
+
+Everything worked.
+
+The IDE understood the project. Not in the vague way that a text editor recognizes matching brackets. IntelliJ looked at the codebase like a detective arriving at a crime scene. It knew who called what. It knew which method was never used. It knew that a nullable value would cause a disaster three directories away. It knew I had named a variable badly, and it judged me in a shade of gray that felt personal.
+
+I pressed rename.
+
+The symbol changed everywhere.
+
+I pressed find usages.
+
+It found usages I did not remember writing.
+
+I opened the database tool.
+
+There was a database tool.
+
+No extension marketplace. No ritual. No Reddit thread titled “Best SQL Extension 2026 Updated Working.” It was simply there, like a responsible adult.
+
+This was luxurious. Dangerous, even.
+
+I had gone from assembling my own IDE out of extensions to entering a fully furnished building where someone had labeled the emergency exits.
+
+## The memory economy
+
+Of course, luxury has a price.
+
+IntelliJ consumes RAM with the calm confidence of someone ordering on a company card. On a modern machine this is fine. On my machine every application must justify its continued residence.
+
+My workflow now resembles air traffic control.
+
+Do I need the browser? Fine. How many tabs?
+
+Four.
+
+Five if one of them is plain text.
+
+Do I need Docker? Then Spotify must die.
+
+Do I need Figma? IntelliJ must close, the browser must apologize, and all nearby electrical devices should prepare for voltage fluctuation.
+
+Opening a large project requires planning. I close old tabs. I stop containers. I clear caches. I whisper a short blessing over Activity Monitor. Then I click the IntelliJ icon and wait while the dock bounce becomes a psychological assessment.
+
+The 120 GB drive adds another layer of sport.
+
+Every dependency has mass. Every cache has consequences. Every Android SDK asks whether I am willing to give up photos from 2019. `node_modules` is no longer a folder. It is an invasive species.
+
+I know exactly what is on my disk because I have to. Developers with two terabytes can keep six copies of the same repository and call it convenience. I find a forgotten `.next` directory and feel the thrill of an archaeologist discovering a lost city made entirely of generated JavaScript.
+
+Delete.
+
+Six hundred megabytes recovered.
+
+We feast tonight.
+
+## The beach ball development methodology
+
+People talk about test-driven development. I practice beach-ball-driven development.
+
+I make a change.
+
+The colorful wheel appears.
+
+I reflect on my decisions.
+
+Sometimes the pause is useful. Modern computers are so fast that developers can make bad decisions at extraordinary speed. My MacBook inserts a small waiting period between idea and consequence.
+
+Should this component really have twelve dependencies?
+
+Should I install another package for a function I could write in nine lines?
+
+Do I need a local Kubernetes cluster to serve a landing page for a theater?
+
+The fan rises in pitch.
+
+No. Apparently I do not.
+
+Working on slow hardware turns performance from an abstract score into a physical sensation. A bloated page does not merely produce a yellow number in Lighthouse. It makes the machine hot enough to toast bread. A runaway process is not a line on a chart. It is a noise in the room.
+
+If a site feels fast here, it will feel supernatural on a new phone.
+
+That is the serious defense, anyway.
+
+The less serious defense is that new laptops cost money and this one still turns on.
+
+## Building real things on the little furnace
+
+This machine has built production websites. It has deployed bots. It has managed infrastructure. It has run theater software late at night when failure would have been witnessed by an actual audience instead of a monitoring dashboard.
+
+It built the landing page for Bohlser Bühne in seven hours overnight, powered by Pepsi and the specific panic that only a deadline can provide.
+
+It works on Nordverkehr infrastructure.
+
+It works on Atlas mods.
+
+It works on Vye.
+
+It has handled code, terminals, databases, SSH sessions, lighting plans, emergency fixes, and at least one moment where I stared at a failed build at 4:00 in the morning and attempted to solve it through personal resentment.
+
+The laptop did not complain.
+
+That is false. It complained continuously and at high volume.
+
+But it completed the work.
+
+There is something deeply satisfying about shipping from hardware that the industry considers ancient. Modern technology marketing insists that creativity is always one purchase away. Your current machine is holding you back. Your ideas need more cores. Your emails need ray tracing. Your todo list would flourish with a neural engine.
+
+Meanwhile, this old MacBook is sitting on my desk, connected to infrastructure around the world, pushing code to servers far more powerful than it will ever be.
+
+The local machine does not have to be the data center. It just has to issue convincing instructions.
+
+## The IntelliJ compromise
+
+Moving to IntelliJ did not make the MacBook faster. It made the tradeoff clearer.
+
+VS Code starts quickly and becomes complicated as I bolt things onto it.
+
+IntelliJ starts like an elderly king getting out of a carriage, but once seated on the throne it knows what is happening.
+
+I prefer that now.
+
+I prefer an IDE that understands refactoring. I prefer integrated tools. I prefer fewer mystery extensions with permission to read my entire workspace. I prefer opening a Java project and getting to work instead of reconstructing a development environment from marketplace archaeology.
+
+Does IntelliJ use more memory?
+
+Absolutely.
+
+Does that mean I occasionally close a browser tab like a Victorian family deciding which child gets to eat?
+
+Also yes.
+
+But the editing experience is worth it. The machine struggles during indexing, then settles. The fan drops from “airport runway” to “distant bathroom ventilation.” I write code. The inspections catch something silly. The refactoring works. I experience the rare sensation of software helping instead of presenting a setup wizard.
+
+## What I have learned
+
+First, eight gigabytes of RAM is not enough for modern development.
+
+It is, however, apparently sufficient.
+
+Those statements can coexist.
+
+Second, storage pressure builds character. It also builds a strong habit of running disk cleanup tools and glaring at package lockfiles.
+
+Third, an old computer can still do serious work when the workflow respects its limits. I do not run every service locally. I use remote infrastructure. I keep tabs under control. I choose tools deliberately. I restart things before they become haunted.
+
+Fourth, developers can adapt to almost anything if the keyboard is good.
+
+And finally, “professional setup” is a slippery phrase. A professional setup is not the newest machine arranged beside a designer lamp for a desk tour. It is the setup that lets you complete the job reliably.
+
+Mine happens to include a decade-old laptop, a hungry IDE, a terminal, several beverages with irresponsible sugar content, and an intimate knowledge of which process is using 1.3 GB of memory.
+
+## Will I upgrade?
+
+Of course.
+
+Eventually.
+
+One day this MacBook will stop receiving patches, stop holding a charge, or finally launch itself through the ceiling during an IntelliJ indexing operation. I will buy something newer. It will have more memory than I know what to do with. Builds will finish before I can stand up. The fans might never turn on.
+
+For the first week, I will feel unstoppable.
+
+Then I will open thirty browser tabs, six Docker containers, two JetBrains IDEs, Figma, Discord, Spotify, a local language model, and an Electron app whose sole purpose is displaying a timer.
+
+The new machine will slow down.
+
+I will blame the machine.
+
+Nature will heal.
+
+Until then, the MacBook Pro 12,1 remains on duty.
+
+Dual-core i5.
+
+Eight gigabytes of RAM.
+
+120 GB of storage.
+
+IntelliJ open.
+
+Fans spinning.
+
+Work shipping.
+
+Please do not open another Chrome tab.

@@ -1,67 +1,88 @@
 import Link from "next/link";
+import { ArrowUpRight, GithubLogo } from "@phosphor-icons/react/dist/ssr";
 import { config } from "@/lib/config";
-import { GitCommit } from "@phosphor-icons/react/dist/ssr";
 
-async function getLatestCommit() {
-  try {
-    const res = await fetch("https://api.github.com/repos/somedev-thing/something-dev.com/commits/main", {
-      next: { revalidate: 3600 }
-    });
-    if (!res.ok) return null;
-    return await res.json();
-  } catch (e) {
-    return null;
-  }
-}
-
-export default async function Footer() {
-  const commit = await getLatestCommit();
-  const shortHash = commit ? commit.sha.substring(0, 7) : "HEAD";
-  const message = commit ? commit.commit.message.split("\n")[0] : "Latest Build";
-
+export default function Footer() {
   return (
-    <footer className="w-full py-12 px-6 border-t border-white/5 bg-black">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            
-            <div className="text-center md:text-left">
-                <Link href={config.identity.repo} target="_blank" className="group">
-                    <h4 className="text-white font-bold text-xl font-display mb-2 group-hover:text-neon-blue transition-colors">
-                        {config.identity.siteName}
-                    </h4>
-                </Link>
-                
-                <div className="text-muted-foreground text-sm font-sans max-w-xs space-y-2">
-                    <p>Built with hate, love, and legacy hardware.</p>
-                    
-                    {/* Github Commit Data */}
-                     <Link href={`${config.identity.repo}/commit/${commit?.sha || ""}`} target="_blank" className="inline-flex items-center gap-2 text-xs font-mono bg-white/5 px-2 py-1 rounded hover:bg-white/10 transition-colors text-white/70">
-                        <GitCommit />
-                        <span>{shortHash}</span>
-                        <span className="opacity-50">|</span>
-                        <span className="truncate max-w-[150px]">{message}</span>
-                     </Link>
-
-                    <p>© {new Date().getFullYear()} {config.identity.name}. All rights reserved.</p>
-                </div>
+    <footer className="border-t border-white/10 bg-[#050505] px-6 pb-8 pt-20 md:px-12 md:pt-28">
+      <div className="mx-auto max-w-[1500px]">
+        <div className="grid gap-16 border-b border-white/10 pb-16 lg:grid-cols-[1.25fr_0.75fr]">
+          <div>
+            <div className="mb-6 flex items-center gap-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-lime-300">
+              <span className="h-2 w-2 rounded-full bg-lime-300 shadow-[0_0_14px_#a3e635]" />
+              Available when the fans are quiet
             </div>
+            <h2 className="max-w-4xl font-display text-5xl font-black leading-[0.9] tracking-[-0.06em] text-white md:text-7xl lg:text-8xl">
+              LET&apos;S MAKE THE INTERNET
+              <span className="text-white/20"> LESS BORING.</span>
+            </h2>
+            <Link
+              href={`mailto:${config.identity.email}`}
+              className="group mt-9 inline-flex items-center gap-3 border-b border-[#ff5c35] pb-1 font-display text-xl font-bold text-[#ff5c35]"
+            >
+              {config.identity.email}
+              <ArrowUpRight weight="bold" className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </Link>
+          </div>
 
-            <nav className="flex items-center gap-8">
+          <div className="grid grid-cols-2 gap-10 self-end sm:grid-cols-3">
+            <div>
+              <div className="mb-5 font-mono text-[9px] uppercase tracking-[0.2em] text-white/25">Navigate</div>
+              <div className="space-y-3">
                 {config.nav.map((link) => (
-                    <Link key={link.name} href={link.href} className="text-muted-foreground hover:text-white transition-colors text-sm font-bold font-sans uppercase">
-                        {link.name}
-                    </Link>
+                  <Link key={link.name} href={link.href} className="block font-nav text-sm font-bold text-white/50 transition-colors hover:text-white">
+                    {link.name}
+                  </Link>
                 ))}
-            </nav>
-
-            <div className="flex gap-4">
-                 {config.socials.map((social) => (
-                    <Link key={social.name} href={social.url} target="_blank" className="text-muted-foreground hover:text-white transition-colors">
-                        <social.icon size={24} weight="fill" />
-                    </Link>
-                 ))}
+              </div>
             </div>
 
+            <div>
+              <div className="mb-5 font-mono text-[9px] uppercase tracking-[0.2em] text-white/25">Elsewhere</div>
+              <div className="space-y-3">
+                {config.socials.slice(0, 5).map((social) => (
+                  <Link key={social.name} href={social.url} target="_blank" className="flex items-center gap-2 font-nav text-sm font-bold text-white/50 transition-colors hover:text-white">
+                    <social.icon size={15} weight="fill" />
+                    {social.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="col-span-2 sm:col-span-1">
+              <div className="mb-5 font-mono text-[9px] uppercase tracking-[0.2em] text-white/25">Questionable</div>
+              <div className="space-y-3">
+                <Link href="/backstage" className="block font-nav text-sm font-bold text-white/12 transition-colors hover:text-[#ff5c35]">
+                  Do not click
+                </Link>
+                <Link href="/horse.exe" className="block font-nav text-sm font-bold text-white/12 transition-colors hover:text-lime-300">
+                  horse.exe
+                </Link>
+                <span className="block font-mono text-[9px] leading-relaxed text-white/15">
+                  ↑ Legal advised against both
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div className="overflow-hidden border-b border-white/10 py-7">
+          <div className="whitespace-nowrap font-display text-[clamp(4rem,13vw,13rem)] font-black leading-[0.72] tracking-[-0.085em] text-white">
+            SOMETHING<span className="text-[#ff5c35]">/</span>DEV
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-5 pt-7 font-mono text-[9px] uppercase tracking-[0.16em] text-white/22 md:flex-row md:items-center md:justify-between">
+          <div>© {new Date().getFullYear()} Dustin. Built on 8 GB and poor impulse control.</div>
+          <div className="flex flex-wrap items-center gap-5">
+            <Link href={config.identity.repo} target="_blank" className="flex items-center gap-2 transition-colors hover:text-white">
+              <GithubLogo size={14} weight="fill" /> Source
+            </Link>
+            <span>MacBook Pro 12,1</span>
+            <span title="Try typing RICK">v2.0.15</span>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }

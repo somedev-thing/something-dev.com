@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { TextAa, Moon, Sun, Palette } from "@phosphor-icons/react/dist/ssr";
+import { useState } from "react";
+import { TextAa, Palette } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 

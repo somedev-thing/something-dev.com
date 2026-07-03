@@ -2,6 +2,7 @@
 
 import { Check, Clipboard } from "@phosphor-icons/react";
 import { useState } from "react";
+import { isValidElement } from "react";
 import { cn } from "@/lib/utils";
 
 interface CodeBlockProps extends React.HTMLAttributes<HTMLElement> {
@@ -15,8 +16,8 @@ export function CodeBlock({ children, className, ...props }: CodeBlockProps) {
   const getTextContent = (node: React.ReactNode): string => {
     if (typeof node === "string") return node;
     if (Array.isArray(node)) return node.map(getTextContent).join("");
-    if (typeof node === "object" && node !== null && "props" in node) {
-      return getTextContent((node as any).props.children);
+    if (isValidElement<{ children?: React.ReactNode }>(node)) {
+      return getTextContent(node.props.children);
     }
     return "";
   };

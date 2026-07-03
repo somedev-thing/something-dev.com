@@ -70,7 +70,7 @@ export function Hero() {
                     </h1>
                     <p className="text-muted-foreground text-lg md:text-xl max-w-2xl leading-relaxed">
                         Fullstack Developer. Digital Hoarder. <br />
-                        <span className="text-accent-primary italic">"Testing is for doubters."</span>
+                        <span className="text-accent-primary italic">&quot;Testing is for doubters.&quot;</span>
                     </p>
                 </motion.div>
             </div>

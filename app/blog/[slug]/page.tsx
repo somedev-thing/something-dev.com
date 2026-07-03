@@ -5,7 +5,7 @@ import { BlogPostReader } from "@/components/BlogPostReader";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts("posts");
-  return posts.map((post: any) => ({
+  return posts.map((post) => ({
     slug: post.slug,
   }));
 }
